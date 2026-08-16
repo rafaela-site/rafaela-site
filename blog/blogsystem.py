@@ -137,8 +137,8 @@ def header_html(depth=0):
       <img src="data:image/png;base64,{{{{LOGO}}}}" alt="">
       <span class="wordmark">Rafaela Ornellas<small>Branding Estratégico</small></span>
     </a>
+    <nav class="header-nav"><a href="{prefix}blog/">Blog</a></nav>
     <div class="header-cta">
-      <a href="{prefix}blog/" style="font-weight:700; font-size:.9rem; text-decoration:none; color:inherit;">Blog</a>
       <span class="header-phone">(32) 99974-2205</span>
       <a class="btn btn-primary" href="{{{{WA_LINK_DEFAULT}}}}" target="_blank" rel="noopener">
         {{{{ICON_WHATSAPP}}}}

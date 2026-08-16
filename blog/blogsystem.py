@@ -226,6 +226,7 @@ def render_post_page(post, content_html):
     style = extract_shared_style() + BLOG_EXTRA_CSS
     date_fmt = post["date"]
     html = f"""<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{post['title']} — Blog Rafaela Ornellas</title>
 <meta name="description" content="{post['excerpt']}">
 <style>
@@ -278,6 +279,7 @@ def render_index_page(posts):
     cards_html = "\n".join(cards) if cards else '        <p style="color:var(--text-soft);">Em breve, novas matérias por aqui.</p>'
 
     html = f"""<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blog — Rafaela Ornellas | Branding Estratégico</title>
 <meta name="description" content="Artigos sobre branding, posicionamento e estratégia de marca, publicados pela Rafaela Ornellas.">
 <style>

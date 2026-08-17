@@ -225,13 +225,63 @@ def apply_common_tokens(html):
 def render_post_page(post, content_html):
     style = extract_shared_style() + BLOG_EXTRA_CSS
     date_fmt = post["date"]
-    html = f"""<meta charset="UTF-8">
+    page_url = f"https://rafaelaornellas.com.br/blog/posts/{post['slug']}.html"
+    html = f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{post['title']} — Blog Rafaela Ornellas</title>
 <meta name="description" content="{post['excerpt']}">
+<link rel="icon" href="/assets/logo.png" type="image/png">
+<link rel="canonical" href="{page_url}">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Rafaela Ornellas — Branding Estratégico">
+<meta property="og:title" content="{post['title']}">
+<meta property="og:description" content="{post['excerpt']}">
+<meta property="og:image" content="https://rafaelaornellas.com.br/assets/og-image.jpg">
+<meta property="og:url" content="{page_url}">
+<meta property="og:locale" content="pt_BR">
+<meta property="article:published_time" content="{post['date']}">
+<meta property="article:author" content="Rafaela Ornellas">
+<meta property="article:section" content="{post['pillar']}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{post['title']}">
+<meta name="twitter:description" content="{post['excerpt']}">
+<meta name="twitter:image" content="https://rafaelaornellas.com.br/assets/og-image.jpg">
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{post['title']}",
+  "description": "{post['excerpt']}",
+  "datePublished": "{post['date']}",
+  "dateModified": "{post['date']}",
+  "url": "{page_url}",
+  "image": "https://rafaelaornellas.com.br/assets/og-image.jpg",
+  "inLanguage": "pt-BR",
+  "author": {{
+    "@type": "Person",
+    "name": "Rafaela Ornellas",
+    "url": "https://rafaelaornellas.com.br/"
+  }},
+  "publisher": {{
+    "@type": "Organization",
+    "name": "Rafaela Ornellas — Branding Estratégico",
+    "url": "https://rafaelaornellas.com.br/"
+  }},
+  "mainEntityOfPage": {{
+    "@type": "WebPage",
+    "@id": "{page_url}"
+  }}
+}}
+</script>
 <style>
 {style}
 </style>
+</head>
+<body>
 
 {header_html(depth=1)}
 
@@ -259,6 +309,8 @@ def render_post_page(post, content_html):
 </main>
 
 {footer_html(depth=1)}
+</body>
+</html>
 """
     return apply_common_tokens(html)
 
@@ -278,13 +330,46 @@ def render_index_page(posts):
         </a>""")
     cards_html = "\n".join(cards) if cards else '        <p style="color:var(--text-soft);">Em breve, novas matérias por aqui.</p>'
 
-    html = f"""<meta charset="UTF-8">
+    html = f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blog — Rafaela Ornellas | Branding Estratégico</title>
 <meta name="description" content="Artigos sobre branding, posicionamento e estratégia de marca, publicados pela Rafaela Ornellas.">
+<link rel="icon" href="/assets/logo.png" type="image/png">
+<link rel="canonical" href="https://rafaelaornellas.com.br/blog/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rafaela Ornellas — Branding Estratégico">
+<meta property="og:title" content="Blog — Rafaela Ornellas | Branding Estratégico">
+<meta property="og:description" content="Artigos sobre branding, posicionamento e estratégia de marca, publicados pela Rafaela Ornellas.">
+<meta property="og:image" content="https://rafaelaornellas.com.br/assets/og-image.jpg">
+<meta property="og:url" content="https://rafaelaornellas.com.br/blog/">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog — Rafaela Ornellas | Branding Estratégico">
+<meta name="twitter:description" content="Artigos sobre branding, posicionamento e estratégia de marca.">
+<meta name="twitter:image" content="https://rafaelaornellas.com.br/assets/og-image.jpg">
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog — Rafaela Ornellas",
+  "url": "https://rafaelaornellas.com.br/blog/",
+  "inLanguage": "pt-BR",
+  "publisher": {{
+    "@type": "Organization",
+    "name": "Rafaela Ornellas — Branding Estratégico",
+    "url": "https://rafaelaornellas.com.br/"
+  }}
+}}
+</script>
 <style>
 {style}
 </style>
+</head>
+<body>
 
 {header_html(depth=0)}
 
@@ -306,8 +391,45 @@ def render_index_page(posts):
 </main>
 
 {footer_html(depth=0)}
+</body>
+</html>
 """
     return apply_common_tokens(html)
+
+
+def write_sitemap(posts):
+    base = "https://rafaelaornellas.com.br"
+    urls = [
+        (f"{base}/", "1.0"),
+        (f"{base}/blog/", "0.9"),
+    ]
+    for p in sorted(posts, key=lambda p: p["date"], reverse=True):
+        urls.append((f"{base}/blog/posts/{p['slug']}.html", "0.7"))
+
+    entries = "\n".join(
+        f"""  <url>
+    <loc>{url}</loc>
+    <priority>{priority}</priority>
+  </url>"""
+        for url, priority in urls
+    )
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{entries}
+</urlset>
+"""
+    with open(os.path.join(REPO_ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write(xml)
+
+
+def write_robots():
+    content = """User-agent: *
+Allow: /
+
+Sitemap: https://rafaelaornellas.com.br/sitemap.xml
+"""
+    with open(os.path.join(REPO_ROOT, "robots.txt"), "w", encoding="utf-8") as f:
+        f.write(content)
 
 
 def rebuild(posts=None):
@@ -326,7 +448,9 @@ def rebuild(posts=None):
         post_html = render_post_page(p, content_html)
         with open(os.path.join(POSTS_DIR, p["slug"] + ".html"), "w", encoding="utf-8") as f:
             f.write(post_html)
-    print(f"Rebuilt index + {len(posts)} post(s).")
+    write_sitemap(posts)
+    write_robots()
+    print(f"Rebuilt index + {len(posts)} post(s). Sitemap and robots.txt updated.")
 
 
 def add_post(title, pillar, excerpt, content_html, post_date=None):

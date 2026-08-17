@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://rafaelaornellas.com.br/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://rafaelaornellas.com.br/blog/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://rafaelaornellas.com.br/blog/posts/sua-marca-nao-e-sobre-voce.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rafaelaornellas.com.br/blog/posts/o-que-separa-marcas-que-cobram-mais-de-marcas-que-pedem-desconto.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rafaelaornellas.com.br/blog/posts/sua-marca-nao-e-a-sua-logo-e-isso-esta-custando-caro.html</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>

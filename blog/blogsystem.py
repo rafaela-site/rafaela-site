@@ -13,6 +13,7 @@ Usage (from repo root, i.e. the folder containing index.html and blog/):
     python3 blog/blogsystem.py rebuild
 """
 import base64
+import hashlib
 import json
 import os
 import re
@@ -78,8 +79,102 @@ def extract_shared_style():
     return style
 
 
+PILLAR_ACCENTS = {
+    "Educar": "#C9A961",
+    "Vender": "#E6CB8E",
+    "Inspirar": "#EFE9DA",
+    "Entreter": "#C9A961",
+}
+
+
+def _esc(s):
+    return (
+        s.replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
+
+
+def _wrap_lines(text, max_chars):
+    words = text.split()
+    lines, cur = [], ""
+    for w in words:
+        trial = (cur + " " + w).strip()
+        if len(trial) <= max_chars:
+            cur = trial
+        else:
+            if cur:
+                lines.append(cur)
+            cur = w
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def cover_svg(title, pillar):
+    """Deterministic on-brand cover graphic for a post: no external images,
+    no network calls, no extra dependencies. Same title always renders the
+    same cover, so rebuilds stay stable."""
+    seed = int(hashlib.md5(title.encode("utf-8")).hexdigest(), 16)
+    cx = 860 + (seed % 260)
+    cy = 110 + ((seed // 260) % 220)
+    rot = (seed % 40) - 20
+    accent = PILLAR_ACCENTS.get(pillar, "#C9A961")
+
+    candidates = [(72, 24, 1), (64, 27, 2), (56, 31, 3), (48, 35, 4), (40, 42, 5)]
+    lines, font_size = None, 36
+    for fs, max_chars, max_lines in candidates:
+        wrapped = _wrap_lines(title, max_chars)
+        if len(wrapped) <= max_lines:
+            lines, font_size = wrapped, fs
+            break
+    if lines is None:
+        lines, font_size = _wrap_lines(title, 46), 34
+
+    n = len(lines)
+    line_height = font_size * 1.18
+    start_y = 315 - (line_height * (n - 1)) / 2 + font_size * 0.32
+    tspans = "\n".join(
+        f'    <tspan x="80" y="{start_y + i * line_height:.1f}">{_esc(l)}</tspan>'
+        for i, l in enumerate(lines)
+    )
+
+    rings = "\n".join(
+        f'    <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{accent}" '
+        f'stroke-width="1.4" opacity="{0.24 - i * 0.06:.2f}"/>'
+        for i, r in enumerate([80, 140, 200])
+    )
+
+    grad_id = f"cover-bg-{seed % 99999}"
+    return f"""<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{_esc(title)}">
+  <defs>
+    <linearGradient id="{grad_id}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E2A1F"/>
+      <stop offset="100%" stop-color="#153726"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#{grad_id})"/>
+  <g transform="rotate({rot} {cx} {cy})">
+{rings}
+  </g>
+  <rect x="80" y="72" width="150" height="34" rx="17" fill="{accent}" opacity="0.16"/>
+  <text x="102" y="95" font-family="'Manrope',sans-serif" font-size="12.5" font-weight="800" letter-spacing="1.6" fill="{accent}">{_esc(pillar.upper())}</text>
+  <text font-family="'Fraunces',Georgia,serif" font-weight="500" font-size="{font_size}" fill="#EFE9DA">
+{tspans}
+  </text>
+  <rect x="80" y="558" width="64" height="3" fill="{accent}"/>
+  <image href="data:image/png;base64,{{{{LOGO}}}}" x="1104" y="546" width="40" height="40" opacity="0.55"/>
+</svg>"""
+
+
 BLOG_EXTRA_CSS = """
   /* ===== Blog additions ===== */
+  .post-cover{border-radius:14px; overflow:hidden; box-shadow:var(--shadow);}
+  .post-cover svg{display:block; width:100%; height:auto;}
+  .post-card-cover{aspect-ratio:1200/630; overflow:hidden;}
+  .post-card-cover svg{display:block; width:100%; height:100%;}
+
   .blog-hero{padding-block:clamp(64px,9vw,100px) clamp(40px,6vw,64px);}
   .blog-hero h1{font-size:clamp(2.2rem,4.4vw,3.4rem); font-weight:500; margin-top:20px; line-height:1.12;}
   .blog-hero p{margin-top:18px; color:var(--text-soft); font-size:1.08rem; max-width:56ch;}
@@ -289,7 +384,10 @@ def render_post_page(post, content_html):
   <section class="post-article">
     <div class="wrap">
       <a class="post-back" href="../">← Voltar para o blog</a>
-      <div class="post-article-head reveal in-view" style="margin-top:22px;">
+      <div class="post-cover reveal in-view" style="margin-top:22px;">
+        {cover_svg(post['title'], post['pillar'])}
+      </div>
+      <div class="post-article-head reveal in-view" style="margin-top:28px;">
         <span class="post-pillar">{post['pillar']}</span>
         <h1>{post['title']}</h1>
         <div class="post-article-meta">{date_fmt} · Rafaela Ornellas</div>
@@ -321,6 +419,7 @@ def render_index_page(posts):
     cards = []
     for p in posts_sorted:
         cards.append(f"""        <a class="post-card reveal in-view" href="posts/{p['slug']}.html">
+          <div class="post-card-cover">{cover_svg(p['title'], p['pillar'])}</div>
           <div class="post-card-body">
             <span class="post-pillar">{p['pillar']}</span>
             <h3>{p['title']}</h3>

@@ -22,6 +22,20 @@
     "livro-42.jpg",
     "livro-48.jpg",
     "livro-49.jpg"
+   ],
+   "quotes": [
+    {
+     "text": "A capa está maravilhosa! Tenho certeza que o conteúdo melhor ainda….",
+     "who": "elianacarqueija",
+     "book": "Sangrando, Eu Me Ressignifiquei",
+     "url": "https://www.instagram.com/p/DJEKiggOPeX/"
+    },
+    {
+     "text": "amei a capa, curiosa sobre a história.",
+     "who": "isabelajambeiro",
+     "book": "Sangrando, Eu Me Ressignifiquei",
+     "url": "https://www.instagram.com/p/DJEKiggOPeX/"
+    }
    ]
   },
   {
@@ -63,6 +77,33 @@
    "files": [
     "livro-51.jpg",
     "livro-50.jpg"
+   ],
+   "quotes": [
+    {
+     "text": "A capa do meu segundo livro chamado O Garoto das Sombras, ficou pronta! Muito obrigado, @rafaelaornellas pelo trabalho incrível…",
+     "who": "viniciusmonfrinato",
+     "author": true,
+     "book": "O Garoto das Sombras",
+     "url": "https://www.instagram.com/reel/DBwn51vRoev/"
+    },
+    {
+     "text": "Essa capa é perfeita!",
+     "who": "mundodaleitoraa",
+     "book": "O Garoto das Sombras",
+     "url": "https://www.instagram.com/p/DPFVQitERPS/"
+    },
+    {
+     "text": "Que capa maravilhosa! Já ganhou meu coração antes mesmo de saber do que se trata a história.",
+     "who": "leiturasdaval",
+     "book": "O Garoto das Sombras",
+     "url": "https://www.instagram.com/p/DKA2CRruP7A/"
+    },
+    {
+     "text": "Que capa diferente, cada parte que eu olho vejo mais um detalhe.",
+     "who": "guilhermepatricioli",
+     "book": "O Garoto das Sombras",
+     "url": "https://www.instagram.com/p/DK5a0H-O_UU/"
+    }
    ]
   },
   {

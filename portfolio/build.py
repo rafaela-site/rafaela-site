@@ -125,6 +125,17 @@ PORTFOLIO_CSS = """
   .pf-books-rest{margin-top:30px;}
   @media (max-width:640px){ .pf-wide .pf-books-feat{grid-template-columns:repeat(2,1fr);} }
   .pf-case{margin-top:20px;}
+  .pf-quotes{margin-top:20px; display:grid; grid-template-columns:repeat(2,1fr); gap:12px; border-top:1px solid rgba(201,169,97,.25); padding-top:18px;}
+  .pf-quote{margin:0; padding:14px 16px; border-left:2px solid var(--gold); background:rgba(255,255,255,.03); border-radius:0 8px 8px 0;}
+  .pf-quote blockquote{margin:0; font-family:'Fraunces',serif; font-size:1rem; line-height:1.45; color:var(--text);}
+  .pf-quote figcaption{margin-top:8px; font-size:.78rem; line-height:1.4; color:var(--text-soft);}
+  .pf-quote figcaption a{color:var(--gold-bright); font-weight:700; text-decoration:none;}
+  .pf-quote figcaption a:hover{text-decoration:underline;}
+  .pf-quote-author{border-left-width:3px; background:rgba(201,169,97,.10); grid-column:1/-1;}
+  .pf-quote-author blockquote{font-size:1.12rem;}
+  .pf-quotes-note{margin-top:22px; font-size:.78rem; color:var(--text-soft); max-width:70ch;}
+  .pf-quotes-note a{color:var(--gold-bright);}
+  @media (max-width:760px){ .pf-quotes{grid-template-columns:1fr;} }
   .pf-case-grid{margin-top:18px; display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(10px,1.6vw,16px);}
   .pf-case-tile{border-radius:8px; overflow:hidden; line-height:0; background:#000; border:1px solid #2B2B2B; aspect-ratio:16/9;}
   .pf-case-tile img{width:100%; height:100%; object-fit:cover; display:block;}
@@ -236,17 +247,30 @@ def build():
             n = len(g["files"])
             meta = f'<small>{html.escape(g.get("meta",""))}</small>' if g.get("meta") else ""
             bid = ' id="julia-horta"' if g["label"] == "Júlia Horta" else ""
+            qs = ""
+            if g.get("quotes"):
+                items = []
+                for q in g["quotes"]:
+                    cls = "pf-quote pf-quote-author" if q.get("author") else "pf-quote"
+                    role = "autor, " if q.get("author") else ""
+                    items.append(
+                        f'<figure class="{cls}"><blockquote>“{html.escape(q["text"])}”</blockquote>'
+                        f'<figcaption><a href="{html.escape(q["url"], quote=True)}" target="_blank" rel="noopener nofollow">@{html.escape(q["who"])}</a>'
+                        f' no Instagram, {role}sobre <i>{html.escape(q["book"])}</i></figcaption></figure>')
+                qs = f'<div class="pf-quotes">{"".join(items)}</div>'
             return (f'<div{bid} class="pf-featured{" pf-wide" if g.get("wide") else ""}">'
                     f'<div class="pf-feat-head"><span class="pf-feat-star" aria-hidden="true">★</span>'
                     f'<b>{html.escape(g["label"])}</b>{meta}</div>'
-                    f'<div class="pf-books pf-books-feat" style="--n:{n}">{"".join(tile(b) for b in g["files"])}</div></div>')
+                    f'<div class="pf-books pf-books-feat" style="--n:{n}">{"".join(tile(b) for b in g["files"])}</div>{qs}</div>')
         wide = "".join(block(g) for g in feat_groups if g.get("wide"))
         series = "".join(block(g) for g in feat_groups if not g.get("wide"))
         featured = wide + (f'<div class="pf-series">{series}</div>' if series else "")
         groups.append(
             f'<section class="pf-group" id="livros" data-cat="livros"><h2>Capas de livros</h2>'
             f'<p class="pf-books-intro">Capas criadas para livros de autores e coletâneas.</p>'
-            f'{featured}<div class="pf-books pf-books-rest">{"".join(tile(b) for b in books)}</div></section>'
+            f'{featured}<div class="pf-books pf-books-rest">{"".join(tile(b) for b in books)}</div>'
+            f'<p class="pf-quotes-note">Comentários públicos do Instagram, reproduzidos na íntegra, com link para o post original. '
+            f'Para pedir a retirada de algum, <a href="https://wa.me/5532999742205" target="_blank" rel="noopener">fale comigo</a>.</p></section>'
         )
     books = [None] * total_books   # mantém o contador do topo
 

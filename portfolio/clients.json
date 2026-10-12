@@ -1,23 +1,5 @@
 [
  {
-  "slug": "draflavia",
-  "name": "Flávia Tessarolo · Endocrinologia",
-  "cat": "saude",
-  "fit": "contain"
- },
- {
-  "slug": "flavio",
-  "name": "Flávio Lombardi · Ortodontia",
-  "cat": "saude",
-  "fit": "contain"
- },
- {
-  "slug": "iany",
-  "name": "Iany Detoni · Odontologia",
-  "cat": "saude",
-  "fit": "contain"
- },
- {
   "slug": "isabela",
   "name": "Dra. Isabela Costa",
   "cat": "saude",
@@ -32,12 +14,6 @@
  {
   "slug": "marcelo-dentista",
   "name": "Marcelo Rizzo · Odontologia",
-  "cat": "saude",
-  "fit": "contain"
- },
- {
-  "slug": "leticia",
-  "name": "Letícia Resende · Psicologia",
   "cat": "saude",
   "fit": "contain"
  },
@@ -60,26 +36,8 @@
   "fit": "cover"
  },
  {
-  "slug": "patricia",
-  "name": "",
-  "cat": "saude",
-  "fit": "contain"
- },
- {
   "slug": "laura",
   "name": "Laura Ornellas · Psicologia",
-  "cat": "saude",
-  "fit": "contain"
- },
- {
-  "slug": "hidrofisio",
-  "name": "Hidrofisio",
-  "cat": "saude",
-  "fit": "contain"
- },
- {
-  "slug": "davila",
-  "name": "Dávila Filippo · Nail Designer",
   "cat": "saude",
   "fit": "contain"
  },
@@ -99,7 +57,7 @@
   "slug": "affari",
   "name": "Affari · Perícia Contábil",
   "cat": "juridico",
-  "fit": "contain"
+  "fit": "cover"
  },
  {
   "slug": "camacho",
@@ -114,46 +72,10 @@
   "fit": "contain"
  },
  {
-  "slug": "future",
-  "name": "Future Invest",
-  "cat": "juridico",
-  "fit": "contain"
- },
- {
-  "slug": "hfside",
-  "name": "HF Side · Seguros e Soluções Financeiras",
-  "cat": "juridico",
-  "fit": "contain"
- },
- {
-  "slug": "karina",
-  "name": "Karina Gonçalves Soares Braga · Advocacia",
-  "cat": "juridico",
-  "fit": "contain"
- },
- {
-  "slug": "lelis",
-  "name": "Pedro Paulo Lelis Advogados",
-  "cat": "juridico",
-  "fit": "contain"
- },
- {
   "slug": "maisq",
   "name": "MaisQ Contabilidade",
   "cat": "juridico",
   "fit": "cover"
- },
- {
-  "slug": "marketing-sna",
-  "name": "Sefair & Nascimento Advogados",
-  "cat": "juridico",
-  "fit": "contain"
- },
- {
-  "slug": "monise",
-  "name": "Nigre, Camacho, Rodrigues & Cataldi",
-  "cat": "juridico",
-  "fit": "contain"
  },
  {
   "slug": "sabrinalopes",
@@ -180,16 +102,10 @@
   "fit": "cover"
  },
  {
-  "slug": "lucianosouza",
-  "name": "Luciano Souza Advogados",
-  "cat": "juridico",
-  "fit": "contain"
- },
- {
   "slug": "connect",
   "name": "Connect Tecnologia",
   "cat": "negocios",
-  "fit": "contain"
+  "fit": "cover"
  },
  {
   "slug": "emanuel",
@@ -210,18 +126,6 @@
   "fit": "contain"
  },
  {
-  "slug": "supra",
-  "name": "Supra IBR Consultoria",
-  "cat": "negocios",
-  "fit": "contain"
- },
- {
-  "slug": "isabellasica",
-  "name": "Umani Consultoria",
-  "cat": "negocios",
-  "fit": "contain"
- },
- {
   "slug": "verum",
   "name": "Verum Telecom",
   "cat": "negocios",
@@ -230,12 +134,6 @@
  {
   "slug": "enfase",
   "name": "Ênfase · Cursos e Concursos da Saúde",
-  "cat": "negocios",
-  "fit": "contain"
- },
- {
-  "slug": "digitrem",
-  "name": "Digitrem",
   "cat": "negocios",
   "fit": "contain"
  },
@@ -265,15 +163,9 @@
  },
  {
   "slug": "rafamazzei",
-  "name": "Segredos do Negócio Soberano",
+  "name": "Rafaella Mazzei",
   "cat": "negocios",
-  "fit": "contain"
- },
- {
-  "slug": "phil",
-  "name": "Coach Phil",
-  "cat": "negocios",
-  "fit": "contain"
+  "fit": "cover"
  },
  {
   "slug": "agiliza",
@@ -294,22 +186,10 @@
   "fit": "cover"
  },
  {
-  "slug": "upcontrucao",
-  "name": "UP Construções",
-  "cat": "negocios",
-  "fit": "contain"
- },
- {
   "slug": "5b",
   "name": "5B",
   "cat": "negocios",
   "fit": "cover"
- },
- {
-  "slug": "brafort",
-  "name": "Brafort",
-  "cat": "negocios",
-  "fit": "contain"
  },
  {
   "slug": "jmr",
@@ -327,7 +207,7 @@
   "slug": "paraibuna",
   "name": "Paraibuna Transportes",
   "cat": "negocios",
-  "fit": "cover"
+  "fit": "contain"
  },
  {
   "slug": "luis",
@@ -340,12 +220,6 @@
   "name": "Metaltubos",
   "cat": "negocios",
   "fit": "contain"
- },
- {
-  "slug": "3rs",
-  "name": "3R's Design",
-  "cat": "negocios",
-  "fit": "cover"
  },
  {
   "slug": "augeo",
@@ -372,12 +246,6 @@
   "fit": "cover"
  },
  {
-  "slug": "larissa_consultora",
-  "name": "",
-  "cat": "negocios",
-  "fit": "cover"
- },
- {
   "slug": "moveisgerais",
   "name": "Móveis Gerais",
   "cat": "negocios",
@@ -385,7 +253,7 @@
  },
  {
   "slug": "uniaodigital",
-  "name": "",
+  "name": "União Digital",
   "cat": "negocios",
   "fit": "cover"
  },
@@ -408,38 +276,14 @@
   "fit": "contain"
  },
  {
-  "slug": "divino",
-  "name": "Divino Café",
-  "cat": "varejo",
-  "fit": "contain"
- },
- {
-  "slug": "lila",
-  "name": "Lila Maria · Uniformes Profissionais",
-  "cat": "varejo",
-  "fit": "contain"
- },
- {
   "slug": "lubenini",
   "name": "Luise Benini · Ateliê",
   "cat": "varejo",
   "fit": "contain"
  },
  {
-  "slug": "mimolandia",
-  "name": "Mimolândia",
-  "cat": "varejo",
-  "fit": "contain"
- },
- {
   "slug": "raquelrocha",
   "name": "Raquel Rocha · Joias e Acessórios",
-  "cat": "varejo",
-  "fit": "contain"
- },
- {
-  "slug": "tradiminas",
-  "name": "Puri",
   "cat": "varejo",
   "fit": "contain"
  },
@@ -486,12 +330,6 @@
   "fit": "cover"
  },
  {
-  "slug": "studiominas",
-  "name": "Studio Minas",
-  "cat": "varejo",
-  "fit": "cover"
- },
- {
   "slug": "marjo",
   "name": "Marjo",
   "cat": "varejo",
@@ -504,18 +342,6 @@
   "fit": "cover"
  },
  {
-  "slug": "hec",
-  "name": "H&C",
-  "cat": "varejo",
-  "fit": "contain"
- },
- {
-  "slug": "cortes",
-  "name": "Côrtes",
-  "cat": "varejo",
-  "fit": "contain"
- },
- {
   "slug": "picnic",
   "name": "Picnic",
   "cat": "varejo",
@@ -526,24 +352,6 @@
   "name": "Caselatto",
   "cat": "varejo",
   "fit": "cover"
- },
- {
-  "slug": "eficaz",
-  "name": "Eficaz · Embalagens",
-  "cat": "varejo",
-  "fit": "contain"
- },
- {
-  "slug": "associacao",
-  "name": "Associação Minas Praia",
-  "cat": "varejo",
-  "fit": "contain"
- },
- {
-  "slug": "auri",
-  "name": "Auri",
-  "cat": "varejo",
-  "fit": "contain"
  },
  {
   "slug": "treinar",
@@ -565,21 +373,15 @@
  },
  {
   "slug": "velisse",
-  "name": "Vessara",
+  "name": "Instituto Velisse",
   "cat": "varejo",
-  "fit": "contain"
- },
- {
-  "slug": "carolfaiao",
-  "name": "Carol Faião",
-  "cat": "pessoal",
-  "fit": "contain"
+  "fit": "cover"
  },
  {
   "slug": "dream",
-  "name": "",
+  "name": "Dream Visions",
   "cat": "pessoal",
-  "fit": "contain"
+  "fit": "cover"
  },
  {
   "slug": "mauro",
@@ -601,26 +403,14 @@
  },
  {
   "slug": "tara",
-  "name": "",
+  "name": "TaRa · Design e Marketing Digital",
   "cat": "pessoal",
-  "fit": "contain"
+  "fit": "cover"
  },
  {
   "slug": "sjrepresenta",
   "name": "SJ Representa",
   "cat": "pessoal",
   "fit": "cover"
- },
- {
-  "slug": "camila",
-  "name": "Camila Mangiavacchi",
-  "cat": "pessoal",
-  "fit": "contain"
- },
- {
-  "slug": "thalita",
-  "name": "Thalita Ferreira · Fotografia",
-  "cat": "pessoal",
-  "fit": "contain"
  }
 ]

@@ -106,10 +106,14 @@ PORTFOLIO_CSS = """
   .pf-feat-head b{font-family:'Fraunces',serif; font-size:clamp(1.25rem,2.4vw,1.7rem); font-weight:500; letter-spacing:0; text-transform:none; color:var(--text);}
   .pf-feat-head small{font-size:.78rem; letter-spacing:.04em; color:var(--text-soft); font-weight:700; text-transform:none;}
   .pf-feat-star{color:var(--gold);}
-  .pf-books-feat{grid-template-columns:repeat(4,1fr); gap:clamp(12px,2vw,22px); margin-top:20px;}
+  .pf-books-feat{grid-template-columns:repeat(var(--n,4),1fr); gap:clamp(10px,1.6vw,18px); margin-top:18px;}
+  .pf-series{margin-top:20px; display:grid; grid-template-columns:repeat(2,1fr); gap:20px; align-items:start;}
+  .pf-series .pf-featured{margin-top:0;}
+  .pf-wide .pf-books-feat{--n:4;}
+  @media (max-width:760px){ .pf-series{grid-template-columns:1fr;} }
   .pf-books-feat .pf-book{box-shadow:0 20px 36px -16px rgba(0,0,0,.95), 0 0 0 1px rgba(201,169,97,.55);}
   .pf-books-rest{margin-top:30px;}
-  @media (max-width:640px){ .pf-books-feat{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:640px){ .pf-wide .pf-books-feat{grid-template-columns:repeat(2,1fr);} }
   .pf-cta{
     margin-top:clamp(56px,8vw,96px); padding:clamp(28px,5vw,48px); border-radius:16px;
     background:var(--surface-2); border:1px solid var(--line);
@@ -158,15 +162,21 @@ def build():
         clients = json.load(f)
 
     books = []
-    feat_files, feat_label = [], ""
+    feat_groups = []
     bpath = os.path.join(PORT_DIR, "books.json")
     if os.path.exists(bpath):
         with open(bpath, encoding="utf-8") as f:
             raw = json.load(f)
         ex = lambda b: os.path.exists(os.path.join(ROOT, "assets", "portfolio", "livros", b))
         if isinstance(raw, dict):
-            feat_label = raw.get("featured", {}).get("label", "")
-            feat_files = [b for b in raw.get("featured", {}).get("files", []) if ex(b)]
+            feat_groups = []
+            fl = raw.get("featured", [])
+            if isinstance(fl, dict):                       # formato antigo (um grupo só)
+                fl = [{"label": fl.get("label",""), "meta": "", "files": fl.get("files", [])}]
+            for g in fl:
+                files_ok = [b for b in g.get("files", []) if ex(b)]
+                if files_ok:
+                    feat_groups.append({**g, "files": files_ok})
             books = [b for b in raw.get("others", []) if ex(b)]
         else:
             books = [b for b in raw if ex(b)]
@@ -200,19 +210,22 @@ def build():
             f'<div class="pf-grid">{"".join(cards)}</div></section>'
         )
 
-    total_books = len(books) + len(feat_files)
+    total_books = len(books) + sum(len(g["files"]) for g in feat_groups)
     if total_books:
         chips.append('<button class="pf-chip" type="button" data-cat="livros" aria-pressed="false">Capas de livros</button>')
         def tile(b):
             return (f'<button class="pf-book" type="button" data-name=""><img src="/assets/portfolio/livros/{b}" '
                     f'alt="Capa de livro" loading="lazy" decoding="async"></button>')
-        featured = ""
-        if feat_files:
-            featured = (
-                f'<div class="pf-featured"><div class="pf-feat-head"><span class="pf-feat-star" aria-hidden="true">★</span>'
-                f'<span>Em destaque</span><b>{html.escape(feat_label)}</b><small>{len(feat_files)} livros</small></div>'
-                f'<div class="pf-books pf-books-feat">{"".join(tile(b) for b in feat_files)}</div></div>'
-            )
+        def block(g):
+            n = len(g["files"])
+            meta = f'<small>{html.escape(g.get("meta",""))}</small>' if g.get("meta") else ""
+            return (f'<div class="pf-featured{" pf-wide" if g.get("wide") else ""}">'
+                    f'<div class="pf-feat-head"><span class="pf-feat-star" aria-hidden="true">★</span>'
+                    f'<b>{html.escape(g["label"])}</b>{meta}</div>'
+                    f'<div class="pf-books pf-books-feat" style="--n:{n}">{"".join(tile(b) for b in g["files"])}</div></div>')
+        wide = "".join(block(g) for g in feat_groups if g.get("wide"))
+        series = "".join(block(g) for g in feat_groups if not g.get("wide"))
+        featured = wide + (f'<div class="pf-series">{series}</div>' if series else "")
         groups.append(
             f'<section class="pf-group" data-cat="livros"><h2>Capas de livros <small>{total_books}</small></h2>'
             f'<p class="pf-books-intro">Capas criadas para livros de autores e coletâneas.</p>'

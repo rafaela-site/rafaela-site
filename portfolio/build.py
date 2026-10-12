@@ -206,7 +206,7 @@ def build():
                 f'alt="{html.escape(alt, quote=True)}" loading="lazy" decoding="async"></div>{cap}</button>'
             )
         groups.append(
-            f'<section class="pf-group" data-cat="{key}"><h2>{html.escape(label)} <small>{len(items)}</small></h2>'
+            f'<section class="pf-group" data-cat="{key}"><h2>{html.escape(label)}</h2>'
             f'<div class="pf-grid">{"".join(cards)}</div></section>'
         )
 
@@ -227,7 +227,7 @@ def build():
         series = "".join(block(g) for g in feat_groups if not g.get("wide"))
         featured = wide + (f'<div class="pf-series">{series}</div>' if series else "")
         groups.append(
-            f'<section class="pf-group" data-cat="livros"><h2>Capas de livros <small>{total_books}</small></h2>'
+            f'<section class="pf-group" data-cat="livros"><h2>Capas de livros</h2>'
             f'<p class="pf-books-intro">Capas criadas para livros de autores e coletâneas.</p>'
             f'{featured}<div class="pf-books pf-books-rest">{"".join(tile(b) for b in books)}</div></section>'
         )
@@ -236,8 +236,8 @@ def build():
     style = bs.extract_shared_style() + bs.BLOG_EXTRA_CSS + PORTFOLIO_CSS
     page_url = "https://rafaelaornellas.com.br/portfolio/"
     title = "Portfólio de identidades visuais e branding"
-    desc = (f"Mais de {total} marcas que ganharam identidade, posicionamento e presença com a "
-            "Rafaela Ornellas: logotipos, identidades visuais e aplicações.")
+    desc = ("Amostra do portfólio de Rafaela Ornellas: identidades visuais, logotipos e capas de livros "
+            "criados em 25 anos de Comunicação e Branding, entre mais de mil projetos.")
     ld = json.dumps({
         "@context": "https://schema.org", "@type": "CollectionPage", "name": title,
         "url": page_url, "inLanguage": "pt-BR", "description": desc,
@@ -278,11 +278,10 @@ def build():
     <div class="wrap">
       <div class="eyebrow">Portfólio</div>
       <h1>Marcas que ganharam identidade e posicionamento</h1>
-      <p>Uma seleção de identidades visuais criadas ao longo de 25 anos de Comunicação e Branding. Cada marca nasce de um diagnóstico e termina em símbolos, cores e formas com significado.</p>
+      <p>Uma amostra dos trabalhos de 25 anos de Comunicação e Branding: identidades visuais e capas de livros entre mais de mil projetos entregues. Cada marca nasce de um diagnóstico e termina em símbolos, cores e formas com significado.</p>
       <div class="pf-count">
-        <div><b>+{total}</b><span>marcas e identidades visuais</span></div>
-        {BOOKSTAT}
-        <div><b>25 anos</b><span>de experiência em branding</span></div>
+        <div><b>+1000</b><span>projetos com marcas reconhecidas nacionalmente</span></div>
+        <div><b>25 anos</b><span>de experiência em Comunicação e Branding</span></div>
       </div>
       <div class="pf-filters" role="group" aria-label="Filtrar por segmento">
         {"".join(chips)}
@@ -294,7 +293,7 @@ def build():
     <div class="wrap">
       {"".join(groups)}
       <div class="pf-cta">
-        <h2>Quer ver a sua marca aqui?</h2>
+        <h2>Isto é só um recorte. Quer ver a sua marca aqui?</h2>
         <a class="btn btn-onbrand" href="{{{{WA_LINK_DEFAULT}}}}" target="_blank" rel="noopener">
           {{{{ICON_WHATSAPP}}}}
           Falar com a Rafaela

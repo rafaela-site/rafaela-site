@@ -89,6 +89,13 @@ PORTFOLIO_CSS = """
     background:rgba(14,42,31,.85); color:#EFE9DA; font-size:1.3rem; line-height:1;
   }
 
+  .pf-books-intro{margin-top:10px; color:var(--text-soft); font-size:1rem; max-width:60ch;}
+  .pf-books{margin-top:22px; display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:20px 16px; align-items:start;}
+  .pf-book{margin:0; padding:0; border:0; background:none; cursor:zoom-in; border-radius:3px; line-height:0;
+    box-shadow:0 14px 26px -14px rgba(0,0,0,.95), 0 0 0 1px #2B2B2B; transition:transform .3s ease, box-shadow .3s ease;}
+  .pf-book:hover{transform:translateY(-5px); box-shadow:0 22px 34px -14px rgba(201,169,97,.35), 0 0 0 1px var(--gold);}
+  .pf-book:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  .pf-book img{width:100%; height:auto; display:block; border-radius:3px;}
   .pf-cta{
     margin-top:clamp(56px,8vw,96px); padding:clamp(28px,5vw,48px); border-radius:16px;
     background:var(--surface-2); border:1px solid var(--line);
@@ -116,7 +123,7 @@ SCRIPT = """
   });
   var dlg = document.getElementById('pf-dialog');
   var img = dlg.querySelector('img'), cap = dlg.querySelector('figcaption');
-  document.querySelectorAll('.pf-card').forEach(function(card){
+  document.querySelectorAll('.pf-card, .pf-book').forEach(function(card){
     card.addEventListener('click', function(){
       var im = card.querySelector('img');
       img.src = im.currentSrc || im.src; img.alt = im.alt;
@@ -135,6 +142,12 @@ SCRIPT = """
 def build():
     with open(os.path.join(PORT_DIR, "clients.json"), encoding="utf-8") as f:
         clients = json.load(f)
+
+    books = []
+    bpath = os.path.join(PORT_DIR, "books.json")
+    if os.path.exists(bpath):
+        with open(bpath, encoding="utf-8") as f:
+            books = [b for b in json.load(f) if os.path.exists(os.path.join(ROOT, "assets", "portfolio", "livros", b))]
 
     present = []
     for c in clients:
@@ -165,6 +178,17 @@ def build():
             f'<div class="pf-grid">{"".join(cards)}</div></section>'
         )
 
+    if books:
+        chips.append('<button class="pf-chip" type="button" data-cat="livros" aria-pressed="false">Capas de livros</button>')
+        tiles = "".join(
+            f'<button class="pf-book" type="button" data-name=""><img src="/assets/portfolio/livros/{b}" '
+            f'alt="Capa de livro" loading="lazy" decoding="async"></button>' for b in books)
+        groups.append(
+            f'<section class="pf-group" data-cat="livros"><h2>Capas de livros <small>{len(books)}</small></h2>'
+            f'<p class="pf-books-intro">Capas criadas para livros de autores e coletâneas.</p>'
+            f'<div class="pf-books">{tiles}</div></section>'
+        )
+
     style = bs.extract_shared_style() + bs.BLOG_EXTRA_CSS + PORTFOLIO_CSS
     page_url = "https://rafaelaornellas.com.br/portfolio/"
     title = "Portfólio de identidades visuais e branding"
@@ -175,6 +199,8 @@ def build():
         "url": page_url, "inLanguage": "pt-BR", "description": desc,
         "author": {"@type": "Person", "name": "Rafaela Ornellas", "url": "https://rafaelaornellas.com.br/"},
     }, ensure_ascii=False)
+
+    BOOKSTAT = (f'<div><b>+{len(books)}</b><span>capas de livros</span></div>' if books else "")
 
     page = f"""<!DOCTYPE html>
 <html lang="pt-BR" data-theme="dark">
@@ -211,6 +237,7 @@ def build():
       <p>Uma seleção de identidades visuais criadas ao longo de 25 anos de Comunicação e Branding. Cada marca nasce de um diagnóstico e termina em símbolos, cores e formas com significado.</p>
       <div class="pf-count">
         <div><b>+{total}</b><span>marcas e identidades visuais</span></div>
+        {BOOKSTAT}
         <div><b>25 anos</b><span>de experiência em branding</span></div>
       </div>
       <div class="pf-filters" role="group" aria-label="Filtrar por segmento">

@@ -71,6 +71,7 @@ PORTFOLIO_CSS = """
   .pf-chip[aria-pressed="true"]{background:var(--btn-bg); color:var(--btn-text); border-color:var(--btn-bg);}
 
   .pf-group{margin-top:clamp(38px,5vw,60px);}
+  .pf-group, .pf-featured{scroll-margin-top:150px;}
   .pf-group h2{font-size:clamp(1.3rem,2.4vw,1.7rem); font-weight:500; display:flex; align-items:baseline; gap:12px;}
   .pf-group h2 small{font-family:'Manrope',sans-serif; font-size:.78rem; font-weight:700; color:var(--text-soft); letter-spacing:.06em;}
   .pf-grid{margin-top:22px; display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px;}
@@ -221,7 +222,7 @@ def build():
                 f'alt="{html.escape(alt, quote=True)}" loading="lazy" decoding="async"></div>{cap}</button>'
             )
         groups.append(
-            f'<section class="pf-group" data-cat="{key}"><h2>{html.escape(label)}</h2>'
+            f'<section class="pf-group" id="{key}" data-cat="{key}"><h2>{html.escape(label)}</h2>'
             f'<div class="pf-grid">{"".join(cards)}</div></section>'
         )
 
@@ -234,7 +235,8 @@ def build():
         def block(g):
             n = len(g["files"])
             meta = f'<small>{html.escape(g.get("meta",""))}</small>' if g.get("meta") else ""
-            return (f'<div class="pf-featured{" pf-wide" if g.get("wide") else ""}">'
+            bid = ' id="julia-horta"' if g["label"] == "Júlia Horta" else ""
+            return (f'<div{bid} class="pf-featured{" pf-wide" if g.get("wide") else ""}">'
                     f'<div class="pf-feat-head"><span class="pf-feat-star" aria-hidden="true">★</span>'
                     f'<b>{html.escape(g["label"])}</b>{meta}</div>'
                     f'<div class="pf-books pf-books-feat" style="--n:{n}">{"".join(tile(b) for b in g["files"])}</div></div>')
@@ -242,7 +244,7 @@ def build():
         series = "".join(block(g) for g in feat_groups if not g.get("wide"))
         featured = wide + (f'<div class="pf-series">{series}</div>' if series else "")
         groups.append(
-            f'<section class="pf-group" data-cat="livros"><h2>Capas de livros</h2>'
+            f'<section class="pf-group" id="livros" data-cat="livros"><h2>Capas de livros</h2>'
             f'<p class="pf-books-intro">Capas criadas para livros de autores e coletâneas.</p>'
             f'{featured}<div class="pf-books pf-books-rest">{"".join(tile(b) for b in books)}</div></section>'
         )
@@ -267,7 +269,7 @@ def build():
                 f'<b>{html.escape(title)}</b><small>{html.escape(desc_c)}</small></div>'
                 f'<div class="pf-case-grid">{tiles_c}</div></div>')
         if blocks:
-            cases_html = (f'<section class="pf-group" data-cat="cases"><h2>Cases de branding</h2>'
+            cases_html = (f'<section class="pf-group" id="cases" data-cat="cases"><h2>Cases de branding</h2>'
                           f'{"".join(blocks)}</section>')
             groups.insert(0, cases_html)
             chips.insert(1, '<button class="pf-chip" type="button" data-cat="cases" aria-pressed="false">Cases de branding</button>')

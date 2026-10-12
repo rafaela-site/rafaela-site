@@ -525,6 +525,19 @@
     .diag-card .btn, .product-foot .btn{width:100%; justify-content:center; white-space:normal; text-align:center;}
   }
 
+  /* ===== Júlia Horta (home) ===== */
+  .jh{padding-block:clamp(48px,7vw,88px); border-bottom:1px solid var(--line);}
+  .jh .wrap{display:grid; grid-template-columns:1fr 1.15fr; gap:clamp(28px,5vw,64px); align-items:center;}
+  .jh h2{font-size:clamp(2rem,4vw,3rem); font-weight:500; margin-top:18px; line-height:1.1;}
+  .jh p{margin-top:16px; color:var(--text-soft); font-size:1.05rem; line-height:1.7; max-width:46ch;}
+  .jh-actions{margin-top:26px; display:flex; flex-wrap:wrap; gap:12px;}
+  .jh-covers{display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(10px,1.6vw,18px);}
+  .jh-covers a{display:block; line-height:0; border-radius:4px; box-shadow:0 18px 30px -16px rgba(0,0,0,.55), 0 0 0 1px var(--line); transition:transform .3s ease, box-shadow .3s ease;}
+  .jh-covers a:hover{transform:translateY(-6px); box-shadow:0 26px 36px -16px rgba(0,0,0,.6), 0 0 0 1px var(--gold);}
+  .jh-covers img{width:100%; height:auto; display:block; border-radius:4px;}
+  @media (max-width:900px){ .jh .wrap{grid-template-columns:1fr;} .jh p{max-width:60ch;} }
+  @media (max-width:560px){ .jh-covers{grid-template-columns:repeat(2,1fr);} .jh-actions .btn{width:100%; justify-content:center;} }
+
   /* ===== Responsive ===== */
   @media (max-width:900px){
     .hero .wrap{grid-template-columns:1fr; text-align:left;}
@@ -601,17 +614,23 @@
     </div>
   </section>
 
-  <!-- TRUST STRIP -->
-  <section class="trust">
-    <div class="wrap reveal">
-      <span class="trust-label">Marcas que já passaram por este processo</span>
-      <div class="trust-marks">
-        <img src="data:image/png;base64,{{LOGO_PARAIBUNA}}" alt="Paraibuna">
-        <img src="data:image/png;base64,{{LOGO_AFFARI}}" alt="Affari Perícia Contábil">
-        <img src="data:image/png;base64,{{LOGO_AGUIALASER}}" alt="Águia Laser">
-        <img src="data:image/png;base64,{{LOGO_BEACHBOMPAS}}" alt="Beach Bompas">
-        <img src="data:image/png;base64,{{LOGO_ISABELACOSTA}}" alt="Dra. Isabela Costa">
-        <img src="data:image/png;base64,{{LOGO_AGILIZA}}" alt="Agiliza">
+  <!-- JÚLIA HORTA (no lugar da faixa de logos) -->
+  <section class="jh" id="julia-horta">
+    <div class="wrap">
+      <div class="jh-copy reveal">
+        <div class="eyebrow">Portfólio</div>
+        <h2>Júlia Horta</h2>
+        <p>Quatro livros, quatro capas criadas pela Rafaela: Vem pro Palco, Vem pro Palco em Paris, Páginas de Fé e O Empoderamento Começa no Autoconhecimento.</p>
+        <div class="jh-actions">
+          <a class="btn btn-primary" href="portfolio/#cases">Ver cases de branding</a>
+          <a class="btn btn-ghost" href="portfolio/">Ver portfólio completo</a>
+        </div>
+      </div>
+      <div class="jh-covers reveal d1">
+        <a href="portfolio/#julia-horta" aria-label="Vem pro Palco em Paris, de Júlia Horta"><img src="assets/portfolio/livros/livro-03.jpg" alt="Capa do livro Vem pro Palco em Paris, de Júlia Horta" loading="lazy"></a>
+        <a href="portfolio/#julia-horta" aria-label="Vem pro Palco, de Júlia Horta"><img src="assets/portfolio/livros/livro-34.jpg" alt="Capa do livro Vem pro Palco, de Júlia Horta" loading="lazy"></a>
+        <a href="portfolio/#julia-horta" aria-label="Páginas de Fé, de Júlia Horta"><img src="assets/portfolio/livros/livro-44.jpg" alt="Capa do livro Páginas de Fé, de Júlia Horta" loading="lazy"></a>
+        <a href="portfolio/#julia-horta" aria-label="O Empoderamento Começa no Autoconhecimento, de Júlia Horta"><img src="assets/portfolio/livros/livro-52.jpg" alt="Capa do livro O Empoderamento Começa no Autoconhecimento, de Júlia Horta" loading="lazy"></a>
       </div>
     </div>
   </section>

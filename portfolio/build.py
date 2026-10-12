@@ -35,6 +35,15 @@ CATEGORIES = [
 CAT_LABEL = dict(CATEGORIES)
 
 PORTFOLIO_CSS = """
+  /* ===== Portfólio: fundo preto ===== */
+  :root[data-theme="dark"]{
+    --bg:#000; --surface:#0B0B0B; --surface-2:#121212; --text:#EFE9DA; --text-soft:#B7C0B0;
+    --line:#2B2B2B; --accent-ink:#E6CB8E; --btn-bg:#C9A961; --btn-text:#0E2A1F;
+    --header-bg:rgba(0,0,0,.9); --shadow:0 20px 50px -20px rgba(0,0,0,.9);
+  }
+  body{background:#000;}
+  header.scrolled{border-color:#2B2B2B;}
+  footer{background:#000; border-top:1px solid #2B2B2B;}
   /* ===== Portfólio ===== */
   .pf-hero{padding-block:clamp(64px,9vw,100px) clamp(28px,4vw,44px);}
   .pf-hero h1{font-size:clamp(2.2rem,4.6vw,3.5rem); font-weight:500; margin-top:20px; line-height:1.12; max-width:20ch;}
@@ -63,7 +72,7 @@ PORTFOLIO_CSS = """
   }
   .pf-card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--gold);}
   .pf-card:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
-  .pf-media{aspect-ratio:4/3; background:#F5EFE2; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+  .pf-media{aspect-ratio:4/3; background:#000; display:flex; align-items:center; justify-content:center; overflow:hidden;}
   .pf-media img{width:100%; height:100%; display:block;}
   .pf-media img.cover{object-fit:cover;}
   .pf-media img.contain{object-fit:contain;}
@@ -72,8 +81,8 @@ PORTFOLIO_CSS = """
 
   .pf-dialog{border:none; padding:0; background:transparent; max-width:min(96vw,1000px); width:100%;}
   .pf-dialog::backdrop{background:rgba(8,20,14,.82);}
-  .pf-dialog figure{margin:0; background:#F5EFE2; border-radius:12px; overflow:hidden; position:relative;}
-  .pf-dialog img{display:block; width:100%; max-height:80vh; object-fit:contain; background:#F5EFE2;}
+  .pf-dialog figure{margin:0; background:#000; border-radius:12px; overflow:hidden; position:relative;}
+  .pf-dialog img{display:block; width:100%; max-height:80vh; object-fit:contain; background:#000;}
   .pf-dialog figcaption{padding:14px 18px; background:var(--surface); color:var(--text); font-weight:700;}
   .pf-close{
     position:absolute; top:10px; right:10px; width:40px; height:40px; border-radius:50%; border:none; cursor:pointer;
@@ -144,7 +153,7 @@ def build():
         for c in items:
             name = c.get("name", "").strip()
             alt = name or "Identidade visual"
-            fit = "contain" if c.get("fit") == "contain" else "cover"
+            fit = "cover"
             cap = f"<div class=\"pf-cap\">{html.escape(name)}</div>" if name else "<div class=\"pf-cap\"><small>Identidade visual</small></div>"
             cards.append(
                 f'<button class="pf-card" type="button" data-name="{html.escape(name, quote=True)}">'
@@ -168,7 +177,7 @@ def build():
     }, ensure_ascii=False)
 
     page = f"""<!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

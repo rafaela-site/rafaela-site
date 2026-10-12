@@ -111,7 +111,7 @@
   "slug": "emanuel",
   "name": "Innus Tecnologia",
   "cat": "negocios",
-  "fit": "contain"
+  "fit": "cover"
  },
  {
   "slug": "evo",
@@ -153,7 +153,7 @@
   "slug": "elevated",
   "name": "Elevated Spaces",
   "cat": "negocios",
-  "fit": "contain"
+  "fit": "cover"
  },
  {
   "slug": "usinaprosperidade",
@@ -255,7 +255,7 @@
   "slug": "uniaodigital",
   "name": "União Digital",
   "cat": "negocios",
-  "fit": "cover"
+  "fit": "contain"
  },
  {
   "slug": "agape",
@@ -373,7 +373,7 @@
  },
  {
   "slug": "velisse",
-  "name": "Instituto Velisse",
+  "name": "Instituto Vessara",
   "cat": "varejo",
   "fit": "cover"
  },
@@ -398,12 +398,6 @@
  {
   "slug": "nina",
   "name": "",
-  "cat": "pessoal",
-  "fit": "cover"
- },
- {
-  "slug": "tara",
-  "name": "TaRa · Design e Marketing Digital",
   "cat": "pessoal",
   "fit": "cover"
  },

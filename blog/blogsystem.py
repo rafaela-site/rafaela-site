@@ -224,15 +224,17 @@ BLOG_EXTRA_CSS = """
 
 
 def header_html(depth=0):
-    prefix = "../" * depth
-    home = prefix if prefix else "./"
+    # Caminhos absolutos: o site vive na raiz do domínio, então "/" e "/blog/"
+    # funcionam igual no índice do blog e nas páginas de post.
+    prefix = "/"
+    home = "/"
     return f"""<header id="site-header">
   <div class="header-inner">
     <a class="brandmark" href="{home}#top">
       <img src="data:image/png;base64,{{{{LOGO}}}}" alt="">
       <span class="wordmark">Rafaela Ornellas<small>Branding Estratégico</small></span>
     </a>
-    <nav class="header-nav"><a href="{prefix}blog/">Blog</a></nav>
+    <nav class="header-nav"><a href="https://diagnostico-rafaela-ornellas.lovable.app/" target="_blank" rel="noopener">Diagnóstico grátis</a><a href="{prefix}blog/">Blog</a></nav>
     <div class="header-cta">
       <span class="header-phone">(32) 99974-2205</span>
       <a class="btn btn-primary" href="{{{{WA_LINK_DEFAULT}}}}" target="_blank" rel="noopener">
@@ -245,8 +247,10 @@ def header_html(depth=0):
 
 
 def footer_html(depth=0):
-    prefix = "../" * depth
-    home = prefix if prefix else "./"
+    # Caminhos absolutos: o site vive na raiz do domínio, então "/" e "/blog/"
+    # funcionam igual no índice do blog e nas páginas de post.
+    prefix = "/"
+    home = "/"
     return f"""<footer>
   <div class="wrap">
     <div class="footer-top">
@@ -268,6 +272,8 @@ def footer_html(depth=0):
         <div class="footer-col">
           <h5>Navegação</h5>
           <a href="{home}#sobre">Sobre</a>
+          <a href="{home}#diretor-de-marca">Diretor de Marca em IA</a>
+          <a href="https://diagnostico-rafaela-ornellas.lovable.app/" target="_blank" rel="noopener">Diagnóstico gratuito</a>
           <a href="{home}#processo">Processo</a>
           <a href="{prefix}blog/">Blog</a>
         </div>

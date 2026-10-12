@@ -38,6 +38,7 @@ CAT_LABEL = dict(CATEGORIES)
 CASES = [
     ("mirian", "Mirian Quitutes", "Identidade visual, brand guide, fachada e materiais"),
     ("vyncus", "Vyncus", "Identidade visual, brand guide e embalagens"),
+    ("karina", "Karina Gonçalves Soares Braga", "Advocacia: identidade visual, brand guide, papelaria e sinalização"),
 ]
 
 PORTFOLIO_CSS = """

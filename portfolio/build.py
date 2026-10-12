@@ -96,6 +96,20 @@ PORTFOLIO_CSS = """
   .pf-book:hover{transform:translateY(-5px); box-shadow:0 22px 34px -14px rgba(201,169,97,.35), 0 0 0 1px var(--gold);}
   .pf-book:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
   .pf-book img{width:100%; height:auto; display:block; border-radius:3px;}
+  .pf-featured{
+    margin-top:26px; padding:clamp(18px,3vw,30px); border-radius:16px;
+    border:1px solid rgba(201,169,97,.5);
+    background:linear-gradient(180deg, rgba(201,169,97,.10), rgba(201,169,97,.02) 60%, transparent);
+  }
+  .pf-feat-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 12px; font-family:'Manrope',sans-serif;
+    font-size:.74rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-bright);}
+  .pf-feat-head b{font-family:'Fraunces',serif; font-size:clamp(1.25rem,2.4vw,1.7rem); font-weight:500; letter-spacing:0; text-transform:none; color:var(--text);}
+  .pf-feat-head small{font-size:.78rem; letter-spacing:.04em; color:var(--text-soft); font-weight:700; text-transform:none;}
+  .pf-feat-star{color:var(--gold);}
+  .pf-books-feat{grid-template-columns:repeat(4,1fr); gap:clamp(12px,2vw,22px); margin-top:20px;}
+  .pf-books-feat .pf-book{box-shadow:0 20px 36px -16px rgba(0,0,0,.95), 0 0 0 1px rgba(201,169,97,.55);}
+  .pf-books-rest{margin-top:30px;}
+  @media (max-width:640px){ .pf-books-feat{grid-template-columns:repeat(2,1fr);} }
   .pf-cta{
     margin-top:clamp(56px,8vw,96px); padding:clamp(28px,5vw,48px); border-radius:16px;
     background:var(--surface-2); border:1px solid var(--line);
@@ -144,10 +158,18 @@ def build():
         clients = json.load(f)
 
     books = []
+    feat_files, feat_label = [], ""
     bpath = os.path.join(PORT_DIR, "books.json")
     if os.path.exists(bpath):
         with open(bpath, encoding="utf-8") as f:
-            books = [b for b in json.load(f) if os.path.exists(os.path.join(ROOT, "assets", "portfolio", "livros", b))]
+            raw = json.load(f)
+        ex = lambda b: os.path.exists(os.path.join(ROOT, "assets", "portfolio", "livros", b))
+        if isinstance(raw, dict):
+            feat_label = raw.get("featured", {}).get("label", "")
+            feat_files = [b for b in raw.get("featured", {}).get("files", []) if ex(b)]
+            books = [b for b in raw.get("others", []) if ex(b)]
+        else:
+            books = [b for b in raw if ex(b)]
 
     present = []
     for c in clients:
@@ -178,16 +200,25 @@ def build():
             f'<div class="pf-grid">{"".join(cards)}</div></section>'
         )
 
-    if books:
+    total_books = len(books) + len(feat_files)
+    if total_books:
         chips.append('<button class="pf-chip" type="button" data-cat="livros" aria-pressed="false">Capas de livros</button>')
-        tiles = "".join(
-            f'<button class="pf-book" type="button" data-name=""><img src="/assets/portfolio/livros/{b}" '
-            f'alt="Capa de livro" loading="lazy" decoding="async"></button>' for b in books)
+        def tile(b):
+            return (f'<button class="pf-book" type="button" data-name=""><img src="/assets/portfolio/livros/{b}" '
+                    f'alt="Capa de livro" loading="lazy" decoding="async"></button>')
+        featured = ""
+        if feat_files:
+            featured = (
+                f'<div class="pf-featured"><div class="pf-feat-head"><span class="pf-feat-star" aria-hidden="true">★</span>'
+                f'<span>Em destaque</span><b>{html.escape(feat_label)}</b><small>{len(feat_files)} livros</small></div>'
+                f'<div class="pf-books pf-books-feat">{"".join(tile(b) for b in feat_files)}</div></div>'
+            )
         groups.append(
-            f'<section class="pf-group" data-cat="livros"><h2>Capas de livros <small>{len(books)}</small></h2>'
+            f'<section class="pf-group" data-cat="livros"><h2>Capas de livros <small>{total_books}</small></h2>'
             f'<p class="pf-books-intro">Capas criadas para livros de autores e coletâneas.</p>'
-            f'<div class="pf-books">{tiles}</div></section>'
+            f'{featured}<div class="pf-books pf-books-rest">{"".join(tile(b) for b in books)}</div></section>'
         )
+    books = [None] * total_books   # mantém o contador do topo
 
     style = bs.extract_shared_style() + bs.BLOG_EXTRA_CSS + PORTFOLIO_CSS
     page_url = "https://rafaelaornellas.com.br/portfolio/"

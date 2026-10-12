@@ -34,6 +34,12 @@ CATEGORIES = [
 ]
 CAT_LABEL = dict(CATEGORIES)
 
+# Cases de branding completo (imagens em assets/portfolio/cases/<chave>-N.jpg)
+CASES = [
+    ("mirian", "Mirian Quitutes", "Identidade visual, brand guide, fachada e materiais"),
+    ("vyncus", "Vyncus", "Identidade visual, brand guide e embalagens"),
+]
+
 PORTFOLIO_CSS = """
   /* ===== Portfólio: fundo preto ===== */
   :root[data-theme="dark"]{
@@ -114,6 +120,12 @@ PORTFOLIO_CSS = """
   .pf-books-feat .pf-book{box-shadow:0 20px 36px -16px rgba(0,0,0,.95), 0 0 0 1px rgba(201,169,97,.55);}
   .pf-books-rest{margin-top:30px;}
   @media (max-width:640px){ .pf-wide .pf-books-feat{grid-template-columns:repeat(2,1fr);} }
+  .pf-case{margin-top:20px;}
+  .pf-case-grid{margin-top:18px; display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(10px,1.6vw,16px);}
+  .pf-case-tile{border-radius:8px; overflow:hidden; line-height:0; background:#000; border:1px solid #2B2B2B; aspect-ratio:16/9;}
+  .pf-case-tile img{width:100%; height:100%; object-fit:cover; display:block;}
+  .pf-case .pf-feat-head small{flex-basis:100%; margin-top:2px;}
+  @media (max-width:640px){ .pf-case-grid{grid-template-columns:repeat(2,1fr);} }
   .pf-cta{
     margin-top:clamp(56px,8vw,96px); padding:clamp(28px,5vw,48px); border-radius:16px;
     background:var(--surface-2); border:1px solid var(--line);
@@ -232,6 +244,30 @@ def build():
             f'{featured}<div class="pf-books pf-books-rest">{"".join(tile(b) for b in books)}</div></section>'
         )
     books = [None] * total_books   # mantém o contador do topo
+
+    cases_html = ""
+    cpath = os.path.join(PORT_DIR, "cases_files.json")
+    if os.path.exists(cpath):
+        with open(cpath, encoding="utf-8") as f:
+            cf = json.load(f)
+        blocks = []
+        for key, title, desc_c in CASES:
+            files_c = [x for x in cf.get(key, []) if os.path.exists(os.path.join(ROOT, "assets", "portfolio", "cases", x))]
+            if not files_c:
+                continue
+            tiles_c = "".join(
+                f'<button class="pf-card pf-case-tile" type="button" data-name="{html.escape(title, quote=True)}">'
+                f'<img src="/assets/portfolio/cases/{x}" alt="{html.escape(title, quote=True)}: branding" '
+                f'loading="lazy" decoding="async"></button>' for x in files_c)
+            blocks.append(
+                f'<div class="pf-featured pf-case"><div class="pf-feat-head"><span class="pf-feat-star" aria-hidden="true">★</span>'
+                f'<b>{html.escape(title)}</b><small>{html.escape(desc_c)}</small></div>'
+                f'<div class="pf-case-grid">{tiles_c}</div></div>')
+        if blocks:
+            cases_html = (f'<section class="pf-group" data-cat="cases"><h2>Cases de branding</h2>'
+                          f'{"".join(blocks)}</section>')
+            groups.insert(0, cases_html)
+            chips.insert(1, '<button class="pf-chip" type="button" data-cat="cases" aria-pressed="false">Cases de branding</button>')
 
     style = bs.extract_shared_style() + bs.BLOG_EXTRA_CSS + PORTFOLIO_CSS
     page_url = "https://rafaelaornellas.com.br/portfolio/"

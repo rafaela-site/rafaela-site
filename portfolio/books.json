@@ -12,6 +12,19 @@
    ]
   },
   {
+   "label": "Marcelo Bonanza",
+   "meta": "6 livros",
+   "wide": true,
+   "files": [
+    "livro-21.jpg",
+    "livro-40.jpg",
+    "livro-41.jpg",
+    "livro-42.jpg",
+    "livro-48.jpg",
+    "livro-49.jpg"
+   ]
+  },
+  {
    "label": "Negócios e Carreira",
    "meta": "2 capas",
    "files": [
@@ -43,6 +56,30 @@
     "livro-24.jpg",
     "livro-19.jpg"
    ]
+  },
+  {
+   "label": "Vinícius Monfrinato",
+   "meta": "2 livros",
+   "files": [
+    "livro-51.jpg",
+    "livro-50.jpg"
+   ]
+  },
+  {
+   "label": "Simone Meirelles",
+   "meta": "2 livros",
+   "files": [
+    "livro-17.jpg",
+    "livro-43.jpg"
+   ]
+  },
+  {
+   "label": "Mari Reis",
+   "meta": "2 livros",
+   "files": [
+    "livro-25.jpg",
+    "livro-30.jpg"
+   ]
   }
  ],
  "others": [
@@ -57,34 +94,22 @@
   "livro-14.jpg",
   "livro-15.jpg",
   "livro-16.jpg",
-  "livro-17.jpg",
   "livro-18.jpg",
   "livro-20.jpg",
-  "livro-21.jpg",
   "livro-22.jpg",
   "livro-23.jpg",
-  "livro-25.jpg",
   "livro-26.jpg",
   "livro-27.jpg",
   "livro-28.jpg",
   "livro-29.jpg",
-  "livro-30.jpg",
   "livro-31.jpg",
   "livro-32.jpg",
   "livro-33.jpg",
   "livro-35.jpg",
   "livro-36.jpg",
   "livro-38.jpg",
-  "livro-40.jpg",
-  "livro-41.jpg",
-  "livro-42.jpg",
-  "livro-43.jpg",
   "livro-45.jpg",
   "livro-46.jpg",
-  "livro-48.jpg",
-  "livro-49.jpg",
-  "livro-50.jpg",
-  "livro-51.jpg",
   "livro-53.jpg",
   "livro-54.jpg",
   "livro-55.jpg",

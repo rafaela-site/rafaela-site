@@ -234,7 +234,7 @@ def header_html(depth=0):
       <img src="data:image/png;base64,{{{{LOGO}}}}" alt="">
       <span class="wordmark">Rafaela Ornellas<small>Branding Estratégico</small></span>
     </a>
-    <nav class="header-nav"><a href="https://diagnostico-rafaela-ornellas.lovable.app/" target="_blank" rel="noopener">Diagnóstico grátis</a><a href="{prefix}blog/">Blog</a></nav>
+    <nav class="header-nav"><a href="{prefix}portfolio/">Portfólio</a><a href="https://diagnostico-rafaela-ornellas.lovable.app/" target="_blank" rel="noopener">Diagnóstico grátis</a><a href="{prefix}blog/">Blog</a></nav>
     <div class="header-cta">
       <span class="header-phone">(32) 99974-2205</span>
       <a class="btn btn-primary" href="{{{{WA_LINK_DEFAULT}}}}" target="_blank" rel="noopener">
@@ -272,6 +272,7 @@ def footer_html(depth=0):
         <div class="footer-col">
           <h5>Navegação</h5>
           <a href="{home}#sobre">Sobre</a>
+          <a href="{prefix}portfolio/">Portfólio</a>
           <a href="{home}#diretor-de-marca">Diretor de Marca em IA</a>
           <a href="https://diagnostico-rafaela-ornellas.lovable.app/" target="_blank" rel="noopener">Diagnóstico gratuito</a>
           <a href="{home}#processo">Processo</a>
@@ -507,6 +508,7 @@ def write_sitemap(posts):
     urls = [
         (f"{base}/", "1.0"),
         (f"{base}/blog/", "0.9"),
+        (f"{base}/portfolio/", "0.9"),
     ]
     for p in sorted(posts, key=lambda p: p["date"], reverse=True):
         urls.append((f"{base}/blog/posts/{p['slug']}.html", "0.7"))

@@ -1,0 +1,626 @@
+[
+ {
+  "slug": "draflavia",
+  "name": "Flávia Tessarolo · Endocrinologia",
+  "cat": "saude",
+  "fit": "contain"
+ },
+ {
+  "slug": "flavio",
+  "name": "Flávio Lombardi · Ortodontia",
+  "cat": "saude",
+  "fit": "contain"
+ },
+ {
+  "slug": "iany",
+  "name": "Iany Detoni · Odontologia",
+  "cat": "saude",
+  "fit": "contain"
+ },
+ {
+  "slug": "isabela",
+  "name": "Dra. Isabela Costa",
+  "cat": "saude",
+  "fit": "cover"
+ },
+ {
+  "slug": "isabela-barreira",
+  "name": "Isabela Barreira · Fonoaudiologia",
+  "cat": "saude",
+  "fit": "cover"
+ },
+ {
+  "slug": "marcelo-dentista",
+  "name": "Marcelo Rizzo · Odontologia",
+  "cat": "saude",
+  "fit": "contain"
+ },
+ {
+  "slug": "leticia",
+  "name": "Letícia Resende · Psicologia",
+  "cat": "saude",
+  "fit": "contain"
+ },
+ {
+  "slug": "rodrigojardim",
+  "name": "Rodrigo Jardim · Fisioterapia Esportiva",
+  "cat": "saude",
+  "fit": "contain"
+ },
+ {
+  "slug": "vanusa",
+  "name": "Viver Magnético · Vanusa Ribeiro",
+  "cat": "saude",
+  "fit": "cover"
+ },
+ {
+  "slug": "amamentapro",
+  "name": "AmamentaPRO",
+  "cat": "saude",
+  "fit": "cover"
+ },
+ {
+  "slug": "patricia",
+  "name": "",
+  "cat": "saude",
+  "fit": "contain"
+ },
+ {
+  "slug": "laura",
+  "name": "Laura Ornellas · Psicologia",
+  "cat": "saude",
+  "fit": "contain"
+ },
+ {
+  "slug": "hidrofisio",
+  "name": "Hidrofisio",
+  "cat": "saude",
+  "fit": "contain"
+ },
+ {
+  "slug": "davila",
+  "name": "Dávila Filippo · Nail Designer",
+  "cat": "saude",
+  "fit": "contain"
+ },
+ {
+  "slug": "academiadedireito",
+  "name": "Academia de Direito Público",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "academy",
+  "name": "Legalmente Academy",
+  "cat": "juridico",
+  "fit": "cover"
+ },
+ {
+  "slug": "affari",
+  "name": "Affari · Perícia Contábil",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "camacho",
+  "name": "Camacho Advogados Associados",
+  "cat": "juridico",
+  "fit": "cover"
+ },
+ {
+  "slug": "ethos",
+  "name": "Ethos · Consultoria Empresarial e Contábil",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "future",
+  "name": "Future Invest",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "hfside",
+  "name": "HF Side · Seguros e Soluções Financeiras",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "karina",
+  "name": "Karina Gonçalves Soares Braga · Advocacia",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "lelis",
+  "name": "Pedro Paulo Lelis Advogados",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "maisq",
+  "name": "MaisQ Contabilidade",
+  "cat": "juridico",
+  "fit": "cover"
+ },
+ {
+  "slug": "marketing-sna",
+  "name": "Sefair & Nascimento Advogados",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "monise",
+  "name": "Nigre, Camacho, Rodrigues & Cataldi",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "sabrinalopes",
+  "name": "Sabrina Lopes · Advocacia Trabalhista",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "xnunc",
+  "name": "Geração eXnunc",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "3m",
+  "name": "3M Consórcios",
+  "cat": "juridico",
+  "fit": "cover"
+ },
+ {
+  "slug": "victoria",
+  "name": "RR Partners",
+  "cat": "juridico",
+  "fit": "cover"
+ },
+ {
+  "slug": "lucianosouza",
+  "name": "Luciano Souza Advogados",
+  "cat": "juridico",
+  "fit": "contain"
+ },
+ {
+  "slug": "connect",
+  "name": "Connect Tecnologia",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "emanuel",
+  "name": "Innus Tecnologia",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "evo",
+  "name": "EVO Gestão Estratégica",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "fabiola",
+  "name": "Fabíola Fois · Gestão de Pessoas",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "supra",
+  "name": "Supra IBR Consultoria",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "isabellasica",
+  "name": "Umani Consultoria",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "verum",
+  "name": "Verum Telecom",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "enfase",
+  "name": "Ênfase · Cursos e Concursos da Saúde",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "digitrem",
+  "name": "Digitrem",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "aguialaser",
+  "name": "Águia Laser",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "genesis",
+  "name": "Genesis",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "elevated",
+  "name": "Elevated Spaces",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "usinaprosperidade",
+  "name": "Usina da Prosperidade",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "rafamazzei",
+  "name": "Segredos do Negócio Soberano",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "phil",
+  "name": "Coach Phil",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "agiliza",
+  "name": "Agiliza · Negócios Imobiliários",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "belvedere",
+  "name": "Belvedere Ambiental",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "cap",
+  "name": "CAP Empreendimentos",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "upcontrucao",
+  "name": "UP Construções",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "5b",
+  "name": "5B",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "brafort",
+  "name": "Brafort",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "jmr",
+  "name": "JMR",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "uniaoseguranca",
+  "name": "União Segurança",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "paraibuna",
+  "name": "Paraibuna Transportes",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "luis",
+  "name": "Airmilhas Soluções",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "metaltubos",
+  "name": "Metaltubos",
+  "cat": "negocios",
+  "fit": "contain"
+ },
+ {
+  "slug": "3rs",
+  "name": "3R's Design",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "augeo",
+  "name": "Augeo",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "lunea",
+  "name": "Lunea",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "cme",
+  "name": "",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "ipdf",
+  "name": "",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "larissa_consultora",
+  "name": "",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "moveisgerais",
+  "name": "Móveis Gerais",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "uniaodigital",
+  "name": "",
+  "cat": "negocios",
+  "fit": "cover"
+ },
+ {
+  "slug": "agape",
+  "name": "Viveiro Agape",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "agora",
+  "name": "Serrana Madeiras",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "chocolatelie",
+  "name": "Chocolatelie · Ana Luiza Faria",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "divino",
+  "name": "Divino Café",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "lila",
+  "name": "Lila Maria · Uniformes Profissionais",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "lubenini",
+  "name": "Luise Benini · Ateliê",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "mimolandia",
+  "name": "Mimolândia",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "raquelrocha",
+  "name": "Raquel Rocha · Joias e Acessórios",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "tradiminas",
+  "name": "Puri",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "atletica",
+  "name": "Atlética Fitness Center",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "leverfit",
+  "name": "Lever Fit",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "esquadrao",
+  "name": "Esquadrão",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "pauline",
+  "name": "Le Valley",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "nossaong",
+  "name": "Nossa ONG Brasil",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "beachbompas",
+  "name": "Beach Bompas",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "aprimore",
+  "name": "Aprimore",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "studiominas",
+  "name": "Studio Minas",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "marjo",
+  "name": "Marjo",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "editora",
+  "name": "Livro · Caminhos para a Consciência",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "hec",
+  "name": "H&C",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "cortes",
+  "name": "Côrtes",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "picnic",
+  "name": "Picnic",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "caselatto",
+  "name": "Caselatto",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "eficaz",
+  "name": "Eficaz · Embalagens",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "associacao",
+  "name": "Associação Minas Praia",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "auri",
+  "name": "Auri",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "treinar",
+  "name": "Treinar",
+  "cat": "varejo",
+  "fit": "cover"
+ },
+ {
+  "slug": "circulando",
+  "name": "Circulando",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "unita",
+  "name": "Unita",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "velisse",
+  "name": "Vessara",
+  "cat": "varejo",
+  "fit": "contain"
+ },
+ {
+  "slug": "carolfaiao",
+  "name": "Carol Faião",
+  "cat": "pessoal",
+  "fit": "contain"
+ },
+ {
+  "slug": "dream",
+  "name": "",
+  "cat": "pessoal",
+  "fit": "contain"
+ },
+ {
+  "slug": "mauro",
+  "name": "",
+  "cat": "pessoal",
+  "fit": "cover"
+ },
+ {
+  "slug": "michelle",
+  "name": "",
+  "cat": "pessoal",
+  "fit": "cover"
+ },
+ {
+  "slug": "nina",
+  "name": "",
+  "cat": "pessoal",
+  "fit": "cover"
+ },
+ {
+  "slug": "tara",
+  "name": "",
+  "cat": "pessoal",
+  "fit": "contain"
+ },
+ {
+  "slug": "sjrepresenta",
+  "name": "SJ Representa",
+  "cat": "pessoal",
+  "fit": "cover"
+ },
+ {
+  "slug": "camila",
+  "name": "Camila Mangiavacchi",
+  "cat": "pessoal",
+  "fit": "contain"
+ },
+ {
+  "slug": "thalita",
+  "name": "Thalita Ferreira · Fotografia",
+  "cat": "pessoal",
+  "fit": "contain"
+ }
+]

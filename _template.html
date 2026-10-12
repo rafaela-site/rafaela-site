@@ -513,6 +513,10 @@
   .diag-points li{color:var(--text);}
   .diag-card .btn{margin-top:28px;}
 
+  @media (max-width:600px){
+    .header-nav{gap:4px; justify-content:space-between;}
+    .header-nav a{padding:6px 10px; font-size:.84rem;}
+  }
   @media (max-width:1000px){ .plans{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:900px){ .diag-grid{grid-template-columns:1fr;} }
   @media (max-width:560px){
@@ -553,7 +557,7 @@
       <img src="data:image/png;base64,{{LOGO}}" alt="">
       <span class="wordmark">Rafaela Ornellas<small>Branding Estratégico</small></span>
     </a>
-    <nav class="header-nav"><a href="https://diagnostico-rafaela-ornellas.lovable.app/" target="_blank" rel="noopener">Diagnóstico grátis</a><a href="blog/">Blog</a></nav>
+    <nav class="header-nav"><a href="portfolio/">Portfólio</a><a href="https://diagnostico-rafaela-ornellas.lovable.app/" target="_blank" rel="noopener">Diagnóstico grátis</a><a href="blog/">Blog</a></nav>
     <div class="header-cta">
       <span class="header-phone">(32) 99974-2205</span>
       <a class="btn btn-primary" href="{{WA_LINK_DEFAULT}}" target="_blank" rel="noopener">
@@ -908,6 +912,7 @@
         <div class="footer-col">
           <h5>Navegação</h5>
           <a href="#sobre">Sobre</a>
+          <a href="portfolio/">Portfólio</a>
           <a href="#diretor-de-marca">Diretor de Marca em IA</a>
           <a href="https://diagnostico-rafaela-ornellas.lovable.app/" target="_blank" rel="noopener">Diagnóstico gratuito</a>
           <a href="#processo">Processo</a>

@@ -40,6 +40,7 @@ CASES = [
     ("vyncus", "Vyncus", "Identidade visual, brand guide e embalagens"),
     ("karina", "Karina Gonçalves Soares Braga", "Advocacia: identidade visual, brand guide, papelaria e sinalização"),
     ("marjo", "Marjo · Alta Marcenaria", "Identidade visual, brand guide, sinalização e uniformes"),
+    ("vessara", "Instituto Vessara", "Identidade visual, brand guide, papelaria, sinalização e uniformes"),
 ]
 
 PORTFOLIO_CSS = """

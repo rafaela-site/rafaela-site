@@ -1,4 +1,14 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+/* Barra superior: voltar ao menu de versões + site da RA */
+#hdr{position:fixed;top:0;left:0;right:0;height:48px;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:0 clamp(12px,2.4vw,28px);background:rgba(24,19,18,.96);border-bottom:1px solid rgba(232,225,215,.14);
+  font-family:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif}
+#hdr a{display:inline-flex;align-items:center;gap:6px;color:#E8E1D7;text-decoration:none;font-weight:600;font-size:13px;letter-spacing:.02em;
+  padding:7px 14px;border:1px solid rgba(232,225,215,.38);border-radius:999px;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
+#hdr a:hover,#hdr a:focus-visible{background:#E8E1D7;color:#2A2321;border-color:#E8E1D7;outline:none}
+@media (max-width:480px){#hdr a{font-size:12px;padding:6px 11px}}
+#viewport{top:48px !important}
+</style></head><body>
 <title>Estudo de Marca Iany Detoni</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -194,6 +204,10 @@ body.idle #ctl{opacity:0}
 </svg>
 
 <div id="bars" aria-hidden="true"></div>
+<header id="hdr" role="navigation" aria-label="Navegação do estudo">
+  <a href="../">&larr; Versões</a>
+  <a href="https://rafaelaornellas.com.br" target="_blank" rel="noopener">Conheça a RA Branding &rarr;</a>
+</header>
 <div id="viewport"><div id="stage">
 
   <!-- 1 CAPA -->
@@ -361,7 +375,7 @@ body.idle #ctl{opacity:0}
   slides.forEach(()=>bars.appendChild(document.createElement('i')));
   let cur=0;
   function fit(){
-    const vw=innerWidth, vh=innerHeight;
+    const vw=innerWidth, vh=innerHeight-48;
     const s=Math.min(vw/1600,(vh-0)/900);
     stage.style.transform='translate(-50%,-50%) scale('+s+')';
   }

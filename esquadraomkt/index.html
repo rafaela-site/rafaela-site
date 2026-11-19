@@ -169,6 +169,106 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--black);color:va
 .site-footer p{margin-bottom:14px}
 .site-footer .btn-site{font-size:.8rem;padding:11px 22px}
 @media(max-width:600px){.header{padding:12px 16px}.logo-img{height:42px}.header-schedule{display:none}}
+
+/* ===== CALENDÁRIO E SUGESTÕES (abas novas) ===== */
+.cal-top{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;margin-bottom:22px}
+.cal-switch{display:inline-flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--card)}
+.cal-switch button{font-family:'Manrope',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.06em;padding:10px 18px;background:transparent;color:var(--muted);border:0;cursor:pointer}
+.cal-switch button[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
+.cal-switch button:focus-visible,.cal-day:focus-visible,.sug-filtro button:focus-visible,.sug-copiar:focus-visible,.sug-link:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
+.cal-legenda{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:.72rem;font-weight:600;color:var(--muted)}
+.cal-legenda span{display:inline-flex;align-items:center;gap:6px}
+.cal-dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+.cal-mes{margin-bottom:34px}
+.cal-mes h3{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(1.4rem,2.6vw,1.9rem);color:var(--gold-bright);margin-bottom:12px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cal-dow{font-size:.64rem;font-weight:800;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;text-align:center;padding:4px 0}
+.cal-day{appearance:none;font-family:'Manrope',sans-serif;text-align:left;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:10px;
+  min-height:92px;padding:7px 7px 6px;display:flex;flex-direction:column;gap:4px;cursor:pointer;transition:border-color .2s ease,transform .2s ease}
+.cal-day:hover{border-color:var(--gold);transform:translateY(-2px)}
+.cal-day.vazio{background:transparent;border-color:transparent;cursor:default;pointer-events:none}
+.cal-day.sem{opacity:.55;cursor:default}
+.cal-day.sem:hover{border-color:var(--border);transform:none}
+.cal-day.hoje{border-color:var(--gold-bright);box-shadow:0 0 0 1px var(--gold-bright) inset}
+.cal-day.sel{background:rgba(201,169,97,.14);border-color:var(--gold)}
+.cal-num{font-size:.78rem;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:4px}
+.cal-hoje{font-size:.52rem;letter-spacing:.1em;background:var(--gold-bright);color:var(--ink);padding:1px 5px;border-radius:999px;font-weight:800}
+.cal-chip{display:block;font-size:.58rem;line-height:1.25;font-weight:800;letter-spacing:.04em;padding:3px 5px;border-radius:4px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cal-tv{background:transparent;color:var(--gold-bright);border:1px solid var(--gold);font-weight:800}
+.cal-tv.rep{color:var(--muted);border-color:rgba(183,192,176,.5)}
+.cal-sv{outline:1.5px dashed var(--ink);outline-offset:-3px}
+.cal-detalhe{background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:22px;margin:12px 0 4px}
+.cal-detalhe[hidden]{display:none}
+.cal-detalhe h4{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:1.35rem;margin-bottom:10px;color:var(--text)}
+.cal-detalhe p{font-size:.88rem;color:var(--muted);margin-bottom:8px}
+.cal-detalhe .rot{font-size:.66rem;font-weight:800;letter-spacing:.12em;color:var(--gold-bright);text-transform:uppercase;display:block;margin-top:12px;margin-bottom:2px}
+.cal-detalhe .vazio-msg{color:var(--muted);font-size:.9rem}
+.cal-aviso{font-size:.8rem;color:var(--muted);margin:0 0 18px;max-width:78ch}
+.cal-link{margin-top:6px}
+.sug-link{background:none;border:0;padding:0;font:inherit;color:var(--gold-bright);text-decoration:underline;cursor:pointer;font-weight:700}
+@media (max-width:700px){
+  .cal-grid{gap:3px}
+  .cal-day{min-height:56px;padding:5px 4px}
+  .cal-chip{font-size:0;padding:0;height:7px;border-radius:3px}
+  .cal-tv{height:7px;border-width:1px}
+  .cal-hoje{display:none}
+  .cal-day.hoje .cal-num::after{content:'•';color:var(--gold-bright)}
+}
+
+.sug-hero{background:linear-gradient(135deg,rgba(201,169,97,.16),rgba(18,51,31,.9));border:1px solid var(--gold);border-radius:16px;padding:clamp(20px,3vw,32px);margin-bottom:30px}
+.sug-hero h2{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;color:var(--gold-bright);margin-bottom:10px}
+.sug-hero p{font-size:.92rem;color:var(--text);max-width:74ch}
+.sug-tres{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+@media(max-width:800px){.sug-tres{grid-template-columns:1fr}}
+.sug-tres div{background:rgba(14,42,31,.6);border:1px solid var(--border);border-radius:12px;padding:16px}
+.sug-tres b{display:block;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:1.1rem;color:var(--gold-bright);margin-bottom:4px}
+.sug-tres span{font-size:.82rem;color:var(--muted)}
+.sug-sec{margin-top:38px}
+.sug-kit{display:grid;grid-template-columns:1fr 1.25fr;gap:18px}
+@media(max-width:800px){.sug-kit{grid-template-columns:1fr}}
+.sug-kit .card h4{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:1.2rem;margin-bottom:10px}
+.sug-kit ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:.86rem;color:var(--muted)}
+.sug-kit li{display:flex;gap:10px}
+.sug-kit li::before{content:'';flex:0 0 8px;height:8px;margin-top:8px;border-radius:50%;background:var(--gold)}
+.sug-kit li b{color:var(--text)}
+.sug-msg{white-space:pre-wrap;font-size:.84rem;line-height:1.65;color:var(--text);background:rgba(14,42,31,.7);border:1px dashed var(--border);border-radius:10px;padding:14px;margin:6px 0 12px}
+.sug-copiar{font-family:'Manrope',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.06em;background:var(--gold);color:var(--ink);border:0;border-radius:999px;padding:9px 18px;cursor:pointer}
+.sug-copiar:hover{background:var(--gold-bright)}
+.sug-filtro{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.sug-filtro .rotulo{font-size:.66rem;font-weight:800;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;align-self:center;margin-right:2px}
+.sug-filtro button{font-family:'Manrope',sans-serif;font-weight:700;font-size:.72rem;padding:7px 14px;border-radius:999px;background:transparent;color:var(--muted);border:1px solid var(--border);cursor:pointer}
+.sug-filtro button[aria-pressed="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.sug-menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:16px}
+.sug-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:9px}
+.sug-item h4{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:1.22rem;line-height:1.2}
+.sug-item p{font-size:.82rem;color:var(--muted)}
+.sug-item .ex{font-size:.82rem;color:var(--text);border-left:2px solid var(--gold);padding-left:10px}
+.sug-tags{display:flex;flex-wrap:wrap;gap:6px}
+.sug-tag{font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+.sug-tag.esf{border-color:rgba(143,209,168,.6);color:var(--green)}
+.sug-tag.pil{border-color:rgba(201,169,97,.55);color:var(--gold-bright)}
+.sug-esp details{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px}
+.sug-esp summary{cursor:pointer;list-style:none;padding:15px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700;font-size:.92rem}
+.sug-esp summary::-webkit-details-marker{display:none}
+.sug-esp summary::after{content:'+';color:var(--gold-bright);font-size:1.2rem}
+.sug-esp details[open] summary::after{content:'–'}
+.sug-esp summary small{display:block;font-weight:500;font-size:.74rem;color:var(--muted)}
+.sug-esp ol{padding:0 18px 16px 38px;display:flex;flex-direction:column;gap:10px;font-size:.84rem;color:var(--muted)}
+.sug-esp ol b{color:var(--text)}
+.sug-tabela{overflow-x:auto;border:1px solid var(--border);border-radius:12px}
+.sug-tabela table{width:100%;border-collapse:collapse;min-width:680px;font-size:.8rem}
+.sug-tabela th{background:rgba(255,255,255,.06);text-align:left;padding:11px 13px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sug-tabela td{padding:11px 13px;border-top:1px solid rgba(255,255,255,.06);vertical-align:top;color:var(--text)}
+.sug-tabela td.mut{color:var(--muted)}
+.sug-semana{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+@media(max-width:1000px){.sug-semana{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.sug-semana{grid-template-columns:1fr}}
+.sug-dia{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px}
+.sug-dia b{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:6px}
+.sug-dia span{font-size:.8rem;color:var(--muted);display:block}
+.sug-dia span.nome{color:var(--text);font-weight:700;margin-bottom:4px}
+.sug-dia.tv{border-color:var(--gold);background:rgba(201,169,97,.1)}
+.sug-nota{font-size:.78rem;color:var(--muted);margin-top:12px;max-width:80ch}
 </style>
 </head>
 <body>
@@ -199,6 +299,12 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--black);color:va
   </button>
   <button class="tab-btn" onclick="showTab('editorial')">
     <span class="tab-icon">🗓️</span> EDITORIAL
+  </button>
+  <button class="tab-btn" onclick="showTab('calendario')">
+    <span class="tab-icon">📆</span> CALENDÁRIO
+  </button>
+  <button class="tab-btn" onclick="showTab('sugestoes')">
+    <span class="tab-icon">💡</span> SUGESTÕES
   </button>
 </nav>
 
@@ -657,7 +763,7 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--black);color:va
   </div>
 
   <div class="agenda-section-label" style="margin-top:36px">📱 Calendário de Postagens · 10/11 a 09/12</div>
-  <p style="font-size:12px;color:var(--muted);margin-bottom:20px;font-weight:500">30 posts programados via mLabs, com a estreia da 2ª Temporada em 19/11. Veja o detalhamento completo, dia a dia, na aba Editorial.</p>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:20px;font-weight:500">30 posts programados via mLabs, com a estreia da 2ª Temporada em 19/11. Veja o detalhamento completo, dia a dia, na aba Editorial, o calendário visual na aba Calendário e as ideias de conteúdo sem vídeo na aba Sugestões.</p>
 </div>
 
 <!-- TAB: EDITORIAL -->
@@ -772,14 +878,14 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--black);color:va
         <td style="padding:10px 14px;font-size:12px;font-weight:700;color:var(--text);white-space:nowrap">21/11<br><span style="font-size:10px;color:var(--muted);font-weight:500">Sab</span></td>
         <td style="padding:10px 14px"><span style="background:#EFE9DA;color:#0E2A1F;font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:4px">BASTIDORES</span></td>
         <td style="padding:10px 14px;font-size:12px;color:var(--muted)">Carrossel</td>
-        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Bastidores do EP1: o que nao vai ao ar</td>
+        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Bastidores do EP1: o que não vai ao ar</td>
         <td style="padding:10px 14px;text-align:center"><span style="background:rgba(255,255,255,.08);color:var(--muted);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px">A CRIAR</span></td>
       </tr>
       <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
         <td style="padding:10px 14px;font-size:12px;font-weight:700;color:var(--text);white-space:nowrap">22/11<br><span style="font-size:10px;color:var(--muted);font-weight:500">Dom</span></td>
         <td style="padding:10px 14px"><span style="background:#8FB39C;color:#0E2A1F;font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:4px">REPRISE</span></td>
         <td style="padding:10px 14px;font-size:12px;color:var(--muted)">Stories + Feed</td>
-        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Reprise EP1 hoje as 11h na ISTV Canal 12.1</td>
+        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Reprise EP1 hoje às 11h na ISTV Canal 12.1</td>
         <td style="padding:10px 14px;text-align:center"><span style="background:rgba(255,255,255,.08);color:var(--muted);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px">A CRIAR</span></td>
       </tr>
       <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
@@ -824,14 +930,14 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--black);color:va
         <td style="padding:10px 14px;font-size:12px;font-weight:700;color:var(--text);white-space:nowrap">28/11<br><span style="font-size:10px;color:var(--muted);font-weight:500">Sab</span></td>
         <td style="padding:10px 14px"><span style="background:#EFE9DA;color:#0E2A1F;font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:4px">BASTIDORES</span></td>
         <td style="padding:10px 14px;font-size:12px;color:var(--muted)">Carrossel</td>
-        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Bastidores EP2: como e o dia de gravação do Esquadrão</td>
+        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Bastidores EP2: como é o dia de gravação do Esquadrão</td>
         <td style="padding:10px 14px;text-align:center"><span style="background:rgba(255,255,255,.08);color:var(--muted);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px">A CRIAR</span></td>
       </tr>
       <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
         <td style="padding:10px 14px;font-size:12px;font-weight:700;color:var(--text);white-space:nowrap">29/11<br><span style="font-size:10px;color:var(--muted);font-weight:500">Dom</span></td>
         <td style="padding:10px 14px"><span style="background:#8FB39C;color:#0E2A1F;font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:4px">REPRISE</span></td>
         <td style="padding:10px 14px;font-size:12px;color:var(--muted)">Stories + Feed</td>
-        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Reprise EP2 hoje as 11h na ISTV Canal 12.1</td>
+        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Reprise EP2 hoje às 11h na ISTV Canal 12.1</td>
         <td style="padding:10px 14px;text-align:center"><span style="background:rgba(255,255,255,.08);color:var(--muted);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px">A CRIAR</span></td>
       </tr>
       <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
@@ -862,7 +968,7 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--black);color:va
         <td style="padding:10px 14px;font-size:12px;font-weight:700;color:var(--text);white-space:nowrap">03/12<br><span style="font-size:10px;color:var(--muted);font-weight:500">Qui</span></td>
         <td style="padding:10px 14px"><span style="background:#C9A961;color:#0E2A1F;font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:4px">CONTEÚDO</span></td>
         <td style="padding:10px 14px;font-size:12px;color:var(--muted)">Carrossel</td>
-        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Collab Allan Matheus + [Convidado EP3]: o mercado le sua empresa · o que a identidade do negócio comunica aos clientes</td>
+        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Collab Allan Matheus + [Convidado EP3]: o mercado lê sua empresa · o que a identidade do negócio comunica aos clientes</td>
         <td style="padding:10px 14px;text-align:center"><span style="background:rgba(255,255,255,.08);color:var(--muted);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px">A CRIAR</span></td>
       </tr>
       <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
@@ -883,7 +989,7 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--black);color:va
         <td style="padding:10px 14px;font-size:12px;font-weight:700;color:var(--text);white-space:nowrap">06/12<br><span style="font-size:10px;color:var(--muted);font-weight:500">Dom</span></td>
         <td style="padding:10px 14px"><span style="background:#8FB39C;color:#0E2A1F;font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:4px">REPRISE</span></td>
         <td style="padding:10px 14px;font-size:12px;color:var(--muted)">Stories + Feed</td>
-        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Reprise EP3 hoje as 11h na ISTV Canal 12.1</td>
+        <td style="padding:10px 14px;font-size:13px;color:var(--text)">Reprise EP3 hoje às 11h na ISTV Canal 12.1</td>
         <td style="padding:10px 14px;text-align:center"><span style="background:rgba(255,255,255,.08);color:var(--muted);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px">A CRIAR</span></td>
       </tr>
       <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
@@ -913,18 +1019,348 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--black);color:va
 
 </div>
 
+
+<!-- TAB: CALENDÁRIO -->
+<div class="tab-panel" id="tab-calendario">
+  <div class="section-title">Calendário · Novembro e Dezembro 2026</div>
+  <p class="cal-aviso">Toque em um dia para ver o post planejado e a exibição na TV e no rádio. No <b>Plano sem vídeo</b>, os 9 Reels que dependem de vídeo do especialista aparecem trocados por formatos que a equipe produz sem ele (os detalhes estão na aba Sugestões).</p>
+  <div class="cal-top">
+    <div class="cal-switch" role="group" aria-label="Escolher o plano">
+      <button type="button" id="cal-orig" aria-pressed="true">PLANO ORIGINAL</button>
+      <button type="button" id="cal-sv" aria-pressed="false">PLANO SEM VÍDEO</button>
+    </div>
+    <div class="cal-legenda" id="cal-legenda"></div>
+  </div>
+  <div id="cal-meses"></div>
+</div>
+
+<!-- TAB: SUGESTÕES -->
+<div class="tab-panel" id="tab-sugestoes">
+
+  <div class="sug-hero">
+    <h2>Sem vídeo do especialista, o que a gente posta?</h2>
+    <p>Vídeo é o pedido mais caro que existe: exige tempo, luz, roteiro e coragem. Em vez de insistir, a proposta é pedir menos e aproveitar mais. Cada especialista manda só 1 áudio e 1 foto, e a equipe transforma isso em carrossel, card, Reels animado e Stories. O programa também já é uma fábrica de vídeo: os cortes dos episódios entram no feed sem exigir nada de ninguém.</p>
+    <div class="sug-tres">
+      <div><b>1. Peça menos</b><span>1 pergunta pronta, 1 áudio de até 1 minuto e 1 foto. Sem roteiro e sem estúdio.</span></div>
+      <div><b>2. Reaproveite o programa</b><span>Cortes dos episódios, resumo em 5 aprendizados e bastidores rendem semanas de conteúdo.</span></div>
+      <div><b>3. Padronize os quadros</b><span>Um quadro fixo por dia da semana economiza decisão e cria hábito no público.</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">O kit de 2 minutos</div>
+  <div class="sug-kit">
+    <div class="card">
+      <h4>O que cada especialista envia</h4>
+      <ul>
+        <li><span><b>1 áudio de até 1 minuto.</b> Responde a 1 pergunta pronta, pelo WhatsApp, sem aparecer.</span></li>
+        <li><span><b>1 foto.</b> Do celular, com boa luz e fundo limpo.</span></li>
+        <li><span><b>1 OK.</b> Recebe o post pronto e aprova com uma palavra.</span></li>
+        <li><span><b>Prazo fixo.</b> Sempre o mesmo dia e a mesma hora da semana. Vira rotina.</span></li>
+        <li><span><b>Reconhecimento.</b> O especialista é marcado no post e a equipe agradece no mesmo dia.</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Mensagem pronta para o WhatsApp</h4>
+      <div class="sug-msg" id="sug-msg">Oi, [nome]! Para manter o Esquadrão forte nas redes sem tomar o seu tempo, o pedido desta semana é leve:
+
+1) Um áudio de até 1 minuto respondendo: [pergunta da semana].
+2) Uma foto sua, do celular, com boa luz.
+
+O resto é comigo: texto, arte e legenda. Te mando o post pronto e você aprova com um OK.
+
+Consegue me enviar até [dia] às [hora]? Obrigada!</div>
+      <button type="button" class="sug-copiar" id="sug-copiar">COPIAR MENSAGEM</button>
+    </div>
+  </div>
+
+  <div class="sug-sec">
+    <div class="section-title">Cardápio de formatos sem vídeo</div>
+    <div class="sug-filtro" id="sug-filtro" role="group" aria-label="Filtrar pelo esforço do especialista"></div>
+    <div class="sug-menu" id="sug-menu"></div>
+    <p class="sug-nota">Os ganchos são exemplos de formato. O conteúdo de cada post precisa ser confirmado com o especialista antes de publicar, principalmente informações de contabilidade, imóveis e números.</p>
+  </div>
+
+  <div class="sug-sec">
+    <div class="section-title">Plano B dos Reels que dependem de vídeo</div>
+    <p class="cal-aviso">São os 9 Reels de Collab do calendário. Para cada um, uma alternativa que a equipe produz sem vídeo do especialista. Os que já passaram da data podem ser reaproveitados mais adiante.</p>
+    <div class="sug-tabela"><table>
+      <thead><tr><th>Data</th><th>Planejado</th><th>Plano sem vídeo</th><th>O que vem do especialista</th></tr></thead>
+      <tbody id="sug-planob"></tbody>
+    </table></div>
+  </div>
+
+  <div class="sug-sec">
+    <div class="section-title">Banco de pautas por especialista</div>
+    <div class="sug-esp" id="sug-esp"></div>
+  </div>
+
+  <div class="sug-sec">
+    <div class="section-title">Semana tipo: quadros fixos</div>
+    <div class="sug-semana" id="sug-semana"></div>
+    <p class="sug-nota">A semana tipo segue o que o calendário já tem: segunda com o convidado, sábado com bastidores e domingo com a reprise. Os dias livres ficam para os formatos do cardápio. Horários de lembrete e de Stories são sugestão: confirme com a produção os horários de exibição e de reprise.</p>
+  </div>
+</div>
+
 <footer class="site-footer">
   <p>Marketing e direção de arte do Esquadrão do Empreendedor por Rafaela Ornellas · RA Branding Estratégico</p>
   <a class="btn-site" href="https://rafaelaornellas.com.br" target="_blank" rel="noopener">Visitar rafaelaornellas.com.br →</a>
 </footer>
 
 <script>
+// ===== abas =====
+// Troca de aba sem depender do evento do clique (também funciona quando chamada por outro botão).
 function showTab(tab) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
-  event.currentTarget.classList.add('active');
+  const botao = document.querySelector(".tab-btn[onclick=\"showTab('" + tab + "')\"]");
+  if (botao) { botao.classList.add('active'); botao.scrollIntoView({ inline: 'center', block: 'nearest' }); }
 }
+
+// ===== dados (calendário editorial + exibição na TV) =====
+const POSTS = [{"d": "2026-11-10", "t": "C", "f": "Carrossel", "s": "Collab Brenda Rotondo: o que toda empresa precisa saber antes de crescer · os pilares financeiros que sustentam a expansão", "st": "A criar"}, {"d": "2026-11-11", "t": "C", "f": "Reels", "s": "Collab Nathalia Vitorino: permuta como estratégia de crescimento · o que o Esquadrão encontra nos negócios", "st": "A criar", "alt": {"f": "Carrossel", "s": "Permuta sem dinheiro: 6 coisas que cabem numa troca", "m": "1 áudio de 1 minuto da Nathalia com exemplos reais de trocas"}}, {"d": "2026-11-12", "t": "C", "f": "Carrossel", "s": "Collab Flaviano Queiroz: a mentalidade do empreendedor antes do diagnóstico · como enxergar o próprio negócio", "st": "A criar"}, {"d": "2026-11-13", "t": "C", "f": "Reels", "s": "Collab Danieli Kraide: gestão que sustenta crescimento · os pilares que o Esquadrão busca em cada negócio", "st": "A criar", "alt": {"f": "Carrossel", "s": "Gestão que sustenta o crescimento: 3 pilares em 3 frases", "m": "3 frases da Danieli, uma por pilar"}}, {"d": "2026-11-14", "t": "C", "f": "Carrossel", "s": "Collab Marcio Menon: o ambiente físico fala pela sua marca · o que o Esquadrão observa ao entrar em um negócio", "st": "A criar"}, {"d": "2026-11-15", "t": "C", "f": "Reels", "s": "Collab Allan Matheus: o ponto comercial como ativo estratégico · o que o mercado imobiliário ensina aos empreendedores", "st": "A criar", "alt": {"f": "Carrossel", "s": "Ponto comercial: 5 perguntas antes de fechar o aluguel", "m": "1 áudio de 1 minuto do Allan e 1 foto"}}, {"d": "2026-11-16", "t": "C", "f": "Carrossel", "s": "Collab Marcelia Barezzi: identidade profissional · como sua marca pessoal fala por você antes mesmo de você falar", "st": "A criar"}, {"d": "2026-11-17", "t": "C", "f": "Reels", "s": "Collab Rafaela Ornellas: marca visível vs marca memorável · a diferença que o Esquadrão ensina aos empreendedores", "st": "A criar", "alt": {"f": "Reels animado de texto", "s": "Marca visível x marca memorável, feito pela RA a partir do carrossel", "m": "Nada: a equipe produz"}}, {"d": "2026-11-18", "t": "C", "f": "Carrossel", "s": "Collab Brenda Rotondo: você sabe o quanto sua empresa realmente custa? os números que os empreendedores precisam conhecer", "st": "A criar"}, {"d": "2026-11-19", "t": "C", "f": "Reels", "s": "Collab Flaviano Queiroz: a virada de mentalidade que transforma um negócio · o que o diagnóstico revela sobre o empreendedor", "st": "A criar", "alt": {"f": "Reels animado de estreia", "s": "Hoje às 20h: estreia da 2ª Temporada, com a foto dos 8 especialistas e a contagem regressiva", "m": "A foto de perfil atual de cada especialista"}}, {"d": "2026-11-20", "t": "C", "f": "Carrossel", "s": "Collab Flaviano Queiroz + [Convidado EP1]: o que o diagnóstico revelou · a virada que transformou o negócio", "st": "A criar"}, {"d": "2026-11-21", "t": "B", "f": "Carrossel", "s": "Bastidores do EP1: o que não vai ao ar", "st": "A criar"}, {"d": "2026-11-22", "t": "R", "f": "Stories + Feed", "s": "Reprise EP1 hoje às 11h na ISTV Canal 12.1", "st": "A criar"}, {"d": "2026-11-23", "t": "V", "f": "Post estático", "s": "[Convidado EP1]: negócio, diagnóstico e o que mudou no Esquadrão", "st": "A criar"}, {"d": "2026-11-24", "t": "P", "f": "Post estático", "s": "Novus Contabilidade (Brenda Rotondo): você sabe quanto sua empresa realmente custa? Contador estratégico faz diferença", "st": "A criar"}, {"d": "2026-11-25", "t": "C", "f": "Carrossel", "s": "Collab Marcelia Barezzi: identidade profissional · como sua marca pessoal fala antes mesmo de você falar", "st": "A criar"}, {"d": "2026-11-26", "t": "C", "f": "Reels", "s": "Collab Marcio Menon + [Convidado EP2]: o ambiente físico como estratégia de marca · o que o negócio comunica sem falar", "st": "A criar", "alt": {"f": "Carrossel", "s": "O ambiente que fala pelo negócio: 3 fotos e o que cada uma comunica", "m": "3 fotos de ambientes do Marcio e 1 áudio de 1 minuto"}}, {"d": "2026-11-27", "t": "C", "f": "Carrossel", "s": "Collab Marcelia Barezzi + [Convidado EP2]: o branding pessoal que ninguém enxergava no negócio", "st": "A criar"}, {"d": "2026-11-28", "t": "B", "f": "Carrossel", "s": "Bastidores EP2: como é o dia de gravação do Esquadrão", "st": "A criar"}, {"d": "2026-11-29", "t": "R", "f": "Stories + Feed", "s": "Reprise EP2 hoje às 11h na ISTV Canal 12.1", "st": "A criar"}, {"d": "2026-11-30", "t": "V", "f": "Post estático", "s": "[Convidado EP2]: negócio, desafio e a virada com o Esquadrão", "st": "A criar"}, {"d": "2026-12-01", "t": "P", "f": "Post estático", "s": "Alt Permuta (Nathalia Vitorino): permuta como estratégia de negócio · o que os empreendedores do Esquadrão aprenderam", "st": "A criar"}, {"d": "2026-12-02", "t": "C", "f": "Reels", "s": "Collab Danieli Kraide: gestão estratégica · o que separa o empreendedor operacional do estratégico", "st": "A criar", "alt": {"f": "Carrossel", "s": "Operacional x estratégico: 5 diferenças lado a lado", "m": "1 áudio de 1 minuto da Danieli"}}, {"d": "2026-12-03", "t": "C", "f": "Carrossel", "s": "Collab Allan Matheus + [Convidado EP3]: o mercado lê sua empresa · o que a identidade do negócio comunica aos clientes", "st": "A criar"}, {"d": "2026-12-04", "t": "C", "f": "Reels", "s": "Collab Rafaela Ornellas + [Convidado EP3]: o branding que travava o crescimento do negócio e como foi destravado", "st": "A criar", "alt": {"f": "Carrossel", "s": "Antes e depois da marca do convidado do EP3, contado em imagens e texto", "m": "Fotos do antes e do depois, com autorização do convidado"}}, {"d": "2026-12-05", "t": "B", "f": "Carrossel", "s": "Bastidores EP3: os especialistas nos bastidores do Esquadrão", "st": "A criar"}, {"d": "2026-12-06", "t": "R", "f": "Stories + Feed", "s": "Reprise EP3 hoje às 11h na ISTV Canal 12.1", "st": "A criar"}, {"d": "2026-12-07", "t": "V", "f": "Post estático", "s": "[Convidado EP3]: negócio, diagnóstico e resultado mensurável", "st": "A criar"}, {"d": "2026-12-08", "t": "C", "f": "Carrossel", "s": "Collab Nathalia Vitorino: permuta estratégica · como trocar valor sem usar dinheiro e crescer o negócio", "st": "A criar"}, {"d": "2026-12-09", "t": "C", "f": "Reels", "s": "Collab Allan Matheus: o imóvel como ativo estratégico do negócio · o que o ambiente comunica sobre a empresa", "st": "A criar", "alt": {"f": "Corte do episódio", "s": "Trecho de 30 a 45 segundos do Allan no episódio, com legenda na tela", "m": "Nada do especialista (liberação do trecho pela ISTV e pela produção)"}}];
+const TIPOS = {
+  C: { nome: 'CONTEÚDO', cor: '#C9A961' }, B: { nome: 'BASTIDORES', cor: '#EFE9DA' }, R: { nome: 'REPRISE', cor: '#8FB39C' },
+  V: { nome: 'CONVIDADO', cor: '#E6CB8E' }, P: { nome: 'PATROCINADOR', cor: '#D9824A' },
+};
+const TV = {
+  '2026-11-19': ['EP 01 · Estreia', 'Estreia 2ª Temporada · Ep. 01', 'ISTV Canal 12.1 · 20h · Rádio ON FM 107.7', false],
+  '2026-11-22': ['Reprise EP 01', 'Reprise Ep. 01', 'ISTV Canal 12.1 · 11h', true],
+  '2026-11-26': ['EP 02', 'Episódio 02', 'ISTV Canal 12.1 · 20h · Rádio ON FM 107.7', false],
+  '2026-11-29': ['Reprise EP 02', 'Reprise Ep. 02', 'ISTV Canal 12.1 · 11h', true],
+  '2026-12-03': ['EP 03', 'Episódio 03', 'ISTV Canal 12.1 · 20h · Rádio ON FM 107.7', false],
+  '2026-12-06': ['Reprise EP 03', 'Reprise Ep. 03', 'ISTV Canal 12.1 · 11h', true],
+  '2026-12-10': ['EP 04', 'Episódio 04', 'ISTV Canal 12.1 · 20h · Rádio ON FM 107.7', false],
+  '2026-12-13': ['Reprise EP 04', 'Reprise Ep. 04', 'ISTV Canal 12.1 · 11h', true],
+  '2026-12-17': ['EP 05', 'Episódio 05', 'ISTV Canal 12.1 · 20h · Rádio ON FM 107.7', false],
+  '2026-12-20': ['Reprise EP 05', 'Reprise Ep. 05', 'ISTV Canal 12.1 · 11h', true],
+  '2026-12-24': ['Especial de Natal', 'Especial de Natal', 'ISTV Canal 12.1 · 20h · Rádio ON FM 107.7', false],
+  '2026-12-27': ['Reprise Natal', 'Reprise Especial Natal', 'ISTV Canal 12.1 · 11h', true],
+};
+const DIAS = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+const DIAS_CURTO = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'];
+const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+const porData = {}; POSTS.forEach(p => { porData[p.d] = p; });
+
+function el(tag, classe, texto) {
+  const e = document.createElement(tag);
+  if (classe) e.className = classe;
+  if (texto !== undefined) e.textContent = texto;
+  return e;
+}
+function dataLonga(iso) {
+  const [a, m, d] = iso.split('-').map(Number);
+  const dt = new Date(a, m - 1, d);
+  return DIAS[dt.getDay()] + ', ' + d + ' de ' + MESES[m - 1];
+}
+function dataCurta(iso) {
+  const [a, m, d] = iso.split('-').map(Number);
+  return String(d).padStart(2, '0') + '/' + String(m).padStart(2, '0') + ' ' + DIAS_CURTO[new Date(a, m - 1, d).getDay()];
+}
+function hojeIso() {
+  const h = new Date();
+  return h.getFullYear() + '-' + String(h.getMonth() + 1).padStart(2, '0') + '-' + String(h.getDate()).padStart(2, '0');
+}
+
+// ===== CALENDÁRIO =====
+let semVideo = false;
+let selecionado = null;
+
+function desenharLegenda() {
+  const L = document.getElementById('cal-legenda');
+  L.textContent = '';
+  Object.values(TIPOS).forEach(t => {
+    const s = el('span'); const d = el('i', 'cal-dot'); d.style.background = t.cor; s.append(d, t.nome); L.append(s);
+  });
+  const tv = el('span'); const d2 = el('i', 'cal-dot'); d2.style.border = '1px solid #C9A961'; tv.append(d2, 'TV E RÁDIO'); L.append(tv);
+}
+
+function desenharCalendario() {
+  const raiz = document.getElementById('cal-meses');
+  raiz.textContent = '';
+  const hoje = hojeIso();
+  [[2026, 10], [2026, 11]].forEach(([ano, mes]) => {
+    const bloco = el('div', 'cal-mes');
+    bloco.append(el('h3', '', MESES[mes][0].toUpperCase() + MESES[mes].slice(1) + ' ' + ano));
+    const grade = el('div', 'cal-grid');
+    DIAS_CURTO.forEach(n => grade.append(el('div', 'cal-dow', n)));
+    const primeiro = new Date(ano, mes, 1).getDay();
+    for (let i = 0; i < primeiro; i++) grade.append(el('div', 'cal-day vazio'));
+    const total = new Date(ano, mes + 1, 0).getDate();
+    for (let dia = 1; dia <= total; dia++) {
+      const iso = ano + '-' + String(mes + 1).padStart(2, '0') + '-' + String(dia).padStart(2, '0');
+      const post = porData[iso]; const tv = TV[iso];
+      const b = el('button', 'cal-day' + (!post && !tv ? ' sem' : '') + (iso === hoje ? ' hoje' : '') + (iso === selecionado ? ' sel' : ''));
+      b.type = 'button'; b.dataset.d = iso;
+      b.setAttribute('aria-label', dataLonga(iso) + (post ? ', ' + TIPOS[post.t].nome.toLowerCase() : '') + (tv ? ', ' + tv[1] : ''));
+      const num = el('div', 'cal-num'); num.append(el('span', '', String(dia)));
+      if (iso === hoje) num.append(el('span', 'cal-hoje', 'HOJE'));
+      b.append(num);
+      if (tv) { const c = el('span', 'cal-chip cal-tv' + (tv[3] ? ' rep' : ''), tv[0]); b.append(c); }
+      if (post) {
+        const usaAlt = semVideo && post.alt;
+        const c = el('span', 'cal-chip' + (usaAlt ? ' cal-sv' : ''), usaAlt ? post.alt.f : TIPOS[post.t].nome.slice(0, 4) + ' · ' + post.f);
+        c.style.background = TIPOS[post.t].cor; b.append(c);
+      }
+      b.addEventListener('click', () => { selecionado = iso; desenharCalendario(); mostrarDia(iso); });
+      grade.append(b);
+    }
+    const det = el('div', 'cal-detalhe'); det.id = 'cal-detalhe-' + mes; det.hidden = true; det.setAttribute('aria-live', 'polite');
+    bloco.append(grade, det); raiz.append(bloco);
+  });
+}
+
+function mostrarDia(iso) {
+  document.querySelectorAll('.cal-detalhe').forEach(x => { x.hidden = true; x.textContent = ''; });
+  const D = document.getElementById('cal-detalhe-' + (Number(iso.split('-')[1]) - 1));
+  if (!D) return;
+  D.hidden = false;
+  D.append(el('h4', '', dataLonga(iso)));
+  const post = porData[iso]; const tv = TV[iso];
+  if (!post && !tv) { D.append(el('p', 'vazio-msg', 'Nenhum post nem exibição planejados neste dia.')); return; }
+  if (tv) {
+    D.append(el('span', 'rot', tv[3] ? 'Reprise' : 'TV e rádio'));
+    D.append(el('p', '', tv[1] + ' · ' + tv[2]));
+  }
+  if (post) {
+    const usaAlt = semVideo && post.alt;
+    D.append(el('span', 'rot', usaAlt ? 'Plano sem vídeo · ' + post.alt.f : TIPOS[post.t].nome + ' · ' + post.f));
+    D.append(el('p', '', usaAlt ? post.alt.s : post.s));
+    if (usaAlt) {
+      D.append(el('span', 'rot', 'O que vem do especialista'));
+      D.append(el('p', '', post.alt.m));
+      D.append(el('span', 'rot', 'Plano original (com vídeo)'));
+      D.append(el('p', '', post.f + ' · ' + post.s));
+    } else if (post.alt) {
+      D.append(el('span', 'rot', 'Plano B sem vídeo'));
+      D.append(el('p', '', post.alt.f + ' · ' + post.alt.s + ' (o que vem do especialista: ' + post.alt.m.charAt(0).toLowerCase() + post.alt.m.slice(1) + ')'));
+    }
+    D.append(el('span', 'rot', 'Status'));
+    D.append(el('p', '', post.st));
+  }
+  if (post && post.alt) {
+    const p = el('p', 'cal-link');
+    const bt = el('button', 'sug-link', 'Ver todas as sugestões sem vídeo');
+    bt.type = 'button'; bt.addEventListener('click', () => { showTab('sugestoes'); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    p.append(bt); D.append(p);
+  }
+}
+
+function ligarCalendario() {
+  const o = document.getElementById('cal-orig'), s = document.getElementById('cal-sv');
+  function trocar(valor) {
+    semVideo = valor;
+    o.setAttribute('aria-pressed', String(!valor)); s.setAttribute('aria-pressed', String(valor));
+    desenharCalendario(); if (selecionado) mostrarDia(selecionado);
+  }
+  o.addEventListener('click', () => trocar(false));
+  s.addEventListener('click', () => trocar(true));
+  desenharLegenda();
+  const hoje = hojeIso();
+  selecionado = (porData[hoje] || TV[hoje]) ? hoje : '2026-11-19';
+  desenharCalendario(); mostrarDia(selecionado);
+}
+
+// ===== SUGESTÕES =====
+const ESFORCO = { nada: 'Nada do especialista', frase: 'Só uma frase', audio: '1 áudio de 1 minuto', fotos: 'Fotos' };
+const MENU = [
+  ['Corte do episódio', 'Reels de 30 a 45 s com legenda na tela', 'nada', 'Educar', 'Um trecho do especialista no próprio programa vira vídeo para o feed. É o jeito mais rápido de ter vídeo sem pedir nada a ninguém. Combinar a liberação do trecho com a ISTV e a produção.', 'Título na tela: "O que o diagnóstico revelou"'],
+  ['Áudio com foto', 'Reels ou Stories com foto, onda sonora e legenda animada', 'audio', 'Educar', 'O áudio de 1 minuto do especialista vira vídeo sem ele gravar vídeo. A foto fica na tela e as palavras aparecem no ritmo da fala.', 'Abertura: "Ouça em 40 segundos: [tema]"'],
+  ['Mito ou verdade', 'Carrossel de 5 cards', 'audio', 'Educar', 'Capa com a afirmação, 3 cards explicando e 1 de fechamento. Fácil de salvar e de compartilhar.', 'Capa: "Mito ou verdade: [afirmação comum da área]?"'],
+  ['Checklist salvável', 'Carrossel', 'audio', 'Educar', 'Uma lista curta que o público quer guardar. Quem salva volta ao post e o alcance cresce.', 'Capa: "Checklist: o que verificar antes de [decisão]"'],
+  ['Frase do especialista', 'Card estático ou Stories', 'frase', 'Inspirar', 'Uma frase que a pessoa já disse no programa ou no WhatsApp, com foto, nome e área de atuação.', 'Card: "[frase]" e, embaixo, nome e especialidade'],
+  ['Pergunta do empreendedor', 'Stories com caixinha de perguntas ou enquete', 'nada', 'Entreter', 'A equipe lança a pergunta, o público responde e o especialista responde depois, por áudio ou por texto. Gera conversa e material para novos posts.', 'Stories: "Qual é a sua maior dúvida sobre [tema]?"'],
+  ['Antes e depois', 'Carrossel de 2 a 4 fotos', 'fotos', 'Inspirar', 'Ambientes, marcas ou perfis que mudaram. Só vale com autorização de quem aparece.', 'Capa: "Antes e depois: [o que mudou]"'],
+  ['Convidado em 3 fatos', 'Post estático ou carrossel', 'frase', 'Inspirar', 'O convidado do episódio envia 3 respostas e 1 foto. Ele quer divulgar e compartilha o post: o alcance vem dele.', 'Card: "[Nome] em 3 fatos"'],
+  ['Bastidor em foto', 'Carrossel de fotos com legenda curta', 'nada', 'Entreter', 'Mesa, roteiro, crachá, equipe, o café antes da gravação. Humaniza o programa e não pede nada aos especialistas.', 'Legenda: "O que você não viu no episódio [nº]"'],
+  ['Contagem regressiva', 'Stories com contagem e Reels animado de chamada', 'nada', 'Vender', 'Do dia anterior até a hora do programa, com lembrete para quem quer assistir. Feito só com texto, cor e a identidade do Esquadrão.', 'Stories: "Hoje às 20h tem Esquadrão. Ative o lembrete."'],
+  ['Mural dos participantes', 'Card padronizado, um por participante', 'frase', 'Inspirar', 'Um modelo único para os 43 participantes do Sebrae. Cada um recebe o seu e compartilha, e o alcance se multiplica.', 'Card: "[Nome] está no Esquadrão. Assista na quinta, às 20h."'],
+  ['Indicação da teia', 'Card ou Stories', 'frase', 'Vender', 'O Marketing de Teia na prática: um especialista indica outro. Quem ouve uma indicação confia mais do que em um anúncio.', 'Card: "Precisa de [serviço]? Fale com [especialista]."'],
+  ['Resumo do episódio', 'Carrossel de 5 aprendizados', 'nada', 'Educar', 'No dia seguinte ao episódio, os 5 pontos que o público mais precisa guardar. Material pronto, sem pedir nada a ninguém.', 'Capa: "5 aprendizados do episódio [nº]"'],
+];
+let filtroAtual = 'todos';
+function desenharMenu() {
+  const F = document.getElementById('sug-filtro'); F.textContent = '';
+  F.append(el('span', 'rotulo', 'Esforço do especialista'));
+  [['todos', 'Todos'], ['nada', 'Nenhum'], ['frase', 'Só uma frase'], ['audio', '1 áudio'], ['fotos', 'Fotos']].forEach(([k, nome]) => {
+    const b = el('button', '', nome); b.type = 'button'; b.setAttribute('aria-pressed', String(filtroAtual === k));
+    b.addEventListener('click', () => { filtroAtual = k; desenharMenu(); });
+    F.append(b);
+  });
+  const M = document.getElementById('sug-menu'); M.textContent = '';
+  MENU.filter(i => filtroAtual === 'todos' || i[2] === filtroAtual).forEach(i => {
+    const c = el('div', 'sug-item');
+    c.append(el('h4', '', i[0]));
+    const tags = el('div', 'sug-tags');
+    tags.append(el('span', 'sug-tag esf', ESFORCO[i[2]]), el('span', 'sug-tag pil', i[3]));
+    c.append(tags, el('p', '', i[1] + '.'), el('p', '', i[4]), el('div', 'ex', i[5]));
+    M.append(c);
+  });
+}
+
+const ESPECIALISTAS = [
+  ['Rafaela Ornellas', 'Branding de Marcas', [['Marca visível x marca memorável', 'Carrossel', 'Nada: a equipe produz'], ['O que a fachada diz antes de a pessoa entrar', 'Antes e depois', 'Fotos de fachadas'], ['Mito ou verdade: logo bonito resolve a marca?', 'Carrossel', 'Nada: a equipe produz']]],
+  ['Brenda Rotondo', 'Contabilidade', [['Checklist de fim de mês para quem tem empresa', 'Carrossel', '1 áudio listando os itens'], ['Mito ou verdade: [afirmação comum sobre imposto ou caixa]', 'Carrossel', '1 áudio'], ['Pergunta do empreendedor: qual é a sua dúvida de contabilidade?', 'Stories', 'Nada: ela responde depois, por áudio']]],
+  ['Nathalia Vitorino', 'Permuta e negócios', [['O que cabe numa permuta: 6 exemplos', 'Carrossel', '1 áudio com exemplos'], ['Permuta em 4 passos', 'Carrossel', '1 áudio'], ['Indicação da teia: quem troca com quem', 'Card', '1 frase']]],
+  ['Marcio Menon', 'Decoração e ambientação', [['Antes e depois de um ambiente comercial', 'Carrossel', '2 a 4 fotos de projetos'], ['O que o cliente sente nos primeiros 10 segundos dentro da loja', 'Carrossel', '1 áudio e 3 fotos'], ['Luz, cor e cheiro: o que cada um comunica', 'Card ou carrossel', '1 áudio']]],
+  ['Allan Matheus', 'Mercado imobiliário', [['Ponto comercial: 5 perguntas antes de fechar o aluguel', 'Checklist', '1 áudio'], ['Mito ou verdade: [afirmação comum sobre aluguel ou compra de imóvel]', 'Carrossel', '1 áudio'], ['O imóvel como ativo do negócio', 'Carrossel', '1 áudio e 1 foto']]],
+  ['Flaviano Queiroz', 'Mentalidade e alta performance', [['Frase da semana e uma pergunta de reflexão', 'Card', '1 frase'], ['Tarefa de 5 minutos para hoje', 'Stories', '1 áudio curto'], ['Onde o seu negócio trava? 3 perguntas', 'Carrossel', '1 áudio com as 3 perguntas']]],
+  ['Marcelia Barezzi', 'Branding pessoal', [['A sua foto de perfil em 3 testes', 'Carrossel', '1 áudio'], ['Bio do Instagram: antes e depois', 'Antes e depois', '2 prints, com autorização'], ['O que a sua assinatura de e-mail diz de você', 'Carrossel', '1 áudio']]],
+  ['Danieli Kraide', 'Gestão estratégica', [['Operacional x estratégico: 5 diferenças lado a lado', 'Carrossel', '1 áudio'], ['Planejamento de 90 dias em uma página', 'Checklist', '1 áudio'], ['3 indicadores para olhar toda segunda-feira', 'Card', '1 frase por indicador']]],
+];
+function desenharEspecialistas() {
+  const R = document.getElementById('sug-esp'); R.textContent = '';
+  ESPECIALISTAS.forEach(([nome, area, ideias], idx) => {
+    const d = el('details'); if (idx === 0) d.open = true;
+    const s = el('summary'); const t = el('span'); t.append(nome); const peq = el('small', '', area); t.append(peq); s.append(t); d.append(s);
+    const ol = el('ol');
+    ideias.forEach(([titulo, formato, pedido]) => {
+      const li = el('li'); const b = el('b', '', titulo);
+      li.append(b, ' · ' + formato + ' · pedido: ' + pedido); ol.append(li);
+    });
+    d.append(ol); R.append(d);
+  });
+}
+function desenharPlanoB() {
+  const T = document.getElementById('sug-planob'); T.textContent = '';
+  POSTS.filter(p => p.alt).forEach(p => {
+    const tr = el('tr');
+    tr.append(el('td', '', dataCurta(p.d)), el('td', 'mut', p.f + ' · ' + p.s), el('td', '', p.alt.f + ' · ' + p.alt.s), el('td', 'mut', p.alt.m));
+    T.append(tr);
+  });
+}
+const SEMANA = [
+  ['Domingo', 'Reprise às 11h', 'Stories e feed com a chamada da reprise.', false],
+  ['Segunda', 'Convidado em 3 fatos', 'O convidado do episódio compartilha o post.', false],
+  ['Terça', 'Patrocinador ou Mito ou verdade', 'Card do patrocinador ou o quadro do especialista da semana.', false],
+  ['Quarta', 'Checklist e contagem', 'Carrossel salvável e Stories de contagem para quinta.', false],
+  ['Quinta', 'Dia de Esquadrão', 'Reels de chamada de manhã, lembrete às 19h e Stories às 20h.', true],
+  ['Sexta', 'Resumo do episódio', '5 aprendizados em carrossel e uma indicação da teia.', false],
+  ['Sábado', 'Bastidor em foto', 'Fotos do estúdio, da equipe e do que ficou de fora.', false],
+];
+function desenharSemana() {
+  const S = document.getElementById('sug-semana'); S.textContent = '';
+  SEMANA.forEach(([dia, nome, desc, tv]) => {
+    const d = el('div', 'sug-dia' + (tv ? ' tv' : ''));
+    const t = el('span', 'nome', nome);
+    d.append(el('b', '', dia), t, el('span', '', desc));
+    S.append(d);
+  });
+}
+function ligarCopia() {
+  const b = document.getElementById('sug-copiar');
+  b.addEventListener('click', async () => {
+    const texto = document.getElementById('sug-msg').textContent;
+    try { await navigator.clipboard.writeText(texto); b.textContent = 'COPIADA'; }
+    catch (e) {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById('sug-msg'));
+      const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); b.textContent = 'SELECIONADA: COPIE (CTRL+C)';
+    }
+    setTimeout(() => { b.textContent = 'COPIAR MENSAGEM'; }, 2500);
+  });
+}
+
+ligarCalendario(); desenharMenu(); desenharEspecialistas(); desenharPlanoB(); desenharSemana(); ligarCopia();
 </script>
 </body>
 </html>
